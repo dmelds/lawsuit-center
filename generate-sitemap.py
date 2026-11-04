@@ -23,6 +23,24 @@ BASE = "https://lawsuit.center"
 # same day. Usage: git commit -m "Add GA4 snippet [skip lastmod] [skip actions]"
 SKIP_TOKEN = "[skip lastmod]"
 
+# Commits to ignore for <lastmod> even though their message lacks SKIP_TOKEN.
+# One full or abbreviated SHA per line in lastmod-skip-commits.txt at the repo
+# root; blank lines and lines starting with # are ignored. For a mechanical
+# change that went up without the token (a GitHub web upload keeps its default
+# "Add files via upload" message), add the upload commit here and re-run the
+# generator rather than rewriting history. Ported from Informer 2026-11-04,
+# after three schema-only uploads stamped four pages with that day's date.
+SKIP_COMMITS_FILE = "lastmod-skip-commits.txt"
+
+
+def skip_commits():
+    try:
+        with open(SKIP_COMMITS_FILE, encoding="utf-8") as fh:
+            return [ln.strip() for ln in fh
+                    if ln.strip() and not ln.lstrip().startswith("#")]
+    except OSError:
+        return []
+
 # Never list these: footer is a fetch() fragment; the rest are noindex/utility.
 EXCLUDE_FILES = {
     "footer.html",          # injected via fetch('/footer.html') — must stay a 200 fragment, not a page
@@ -70,18 +88,25 @@ def redirected_away():
 
 
 def git_lastmod(path):
-    try:
     # --no-merges is load-bearing. A merge commit's message never carries
     # SKIP_TOKEN, so without it the PR merge that lands a mechanical sweep is
     # reported as the file's last change and the skip token is bypassed for
     # every file the merge was not TREESAME to a parent on.
+    # The first pass drops token commits and listed SHAs; the second pass, used
+    # only when every commit was skipped, takes the newest commit of any kind.
+    skipped = skip_commits()
+    try:
         for extra in (["-F", f"--grep={SKIP_TOKEN}", "--invert-grep"], []):
             out = subprocess.run(
-                ["git", "log", "-1", "--no-merges", "--format=%cs", *extra, "--", path],
+                ["git", "log", "--no-merges", "--format=%H %cs", *extra, "--", path],
                 capture_output=True, text=True, check=True,
-            ).stdout.strip()
-            if out:
-                return out
+            ).stdout
+            for line in out.splitlines():
+                sha, _, d = line.partition(" ")
+                if extra and any(sha.startswith(x) for x in skipped):
+                    continue
+                if d:
+                    return d
     except (subprocess.CalledProcessError, FileNotFoundError):
         pass
     try:
