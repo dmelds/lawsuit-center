@@ -1,0 +1,5 @@
+# Commits ignored for sitemap <lastmod>. See generate-sitemap.py.
+# 2026-11-04: schema-only uploads (WebPage->Article, duplicate author) that went up without [skip lastmod]
+359e342
+8f762ff
+33e61d4
