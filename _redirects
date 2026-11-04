@@ -10,6 +10,7 @@
 /generate-sitemap.py  /404.html  404!
 /generate_redirects.py  /404.html  404!
 /inline_footer.py  /404.html  404!
+/lastmod-skip-commits.txt  /404.html  404!
 /netlify.toml  /404.html  404!
 /perf_head.py  /404.html  404!
 /set_footer_legal.py  /404.html  404!
