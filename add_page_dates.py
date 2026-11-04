@@ -92,7 +92,12 @@ def add_ld_dates(html, pub, mod):
     node = m.group(1)
     indent = (re.search(r"\n(\s*)\"", node) or re.search(r"\n(\s*)}", node))
     ind = indent.group(1) if indent else "    "
-    ins = f'"datePublished": "{pub}",\n{ind}"dateModified": "{mod}",\n{ind}{AUTHOR},'
+    # Add the author only when the node has none. Twelve pages already carried
+    # a richer author (the davidmeldofsky.com @id plus sameAs) when this sweep
+    # first ran on 2026-10-18, and an unconditional insert gave them a second
+    # "author" key. JSON keeps the last duplicate, so the richer one was lost.
+    author = "" if '"author"' in node else f"\n{ind}{AUTHOR},"
+    ins = f'"datePublished": "{pub}",\n{ind}"dateModified": "{mod}",{author}'
     node2 = node
     if '"publisher"' in node:
         node2 = re.sub(r'(\n\s*)"publisher"', lambda mm: mm.group(1) + ins.replace("\n" + ind, mm.group(1)) + mm.group(1) + '"publisher"', node, count=1)
