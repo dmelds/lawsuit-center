@@ -52,7 +52,7 @@
     "description": "Request an AFFF firefighting foam case review through Lawsuit Center.",
     "url": "https://lawsuit.center/afff-case-review",
     "datePublished": "2026-04-11",
-    "dateModified": "2026-10-28",
+    "dateModified": "2026-11-05",
     "author": { "@type": "Person", "name": "David Meldofsky", "jobTitle": "Attorney", "url": "https://lawsuit.center/david-meldofsky" },
     "publisher": {
       "@type": "Organization",
@@ -452,7 +452,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="actions">
       <a href="#case-review-form" class="btn btn--amber btn--lg">Skip to Form ↓</a>
     </div>
-    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-10-28">October 28, 2026</time>.</p>
+    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-11-05">November 5, 2026</time>.</p>
     <p class="meta">
       Free initial review · No obligation · No attorney-client relationship is formed by submitting this form.
     </p>
@@ -553,6 +553,12 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
           <p id="diagnosis-note" class="form-note">
             Choose the diagnosis a doctor gave you. If you have no diagnosis yet, or yours is not listed, choose the last option.
           </p>
+        </div>
+
+        <div class="field" id="cancer-type-field" hidden>
+          <label for="cancer-type" class="field-label">Which cancer?</label>
+          <input type="text" id="cancer-type" name="cancer-type" maxlength="80" placeholder="e.g. bladder cancer" aria-describedby="cancer-type-note" />
+          <p id="cancer-type-note" class="form-note">Type the cancer your doctor named. The firm reviewing your request needs it.</p>
         </div>
 
         <div class="field" id="diagnosis-year-field" hidden>
@@ -917,6 +923,43 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     diagnosis.addEventListener("change", sync);
     year.addEventListener("input", checkYear);
     sync();
+  })();
+
+  // Which cancer: shown and required only for "Other cancer".
+  // Longer wait: every AFFF request takes longer to place while new AFFF filings are stalled,
+  // so the thank-you page swaps its timing copy. The flag carries a timestamp and the
+  // thank-you page ignores it after an hour, so an abandoned submit cannot leak onto
+  // a later request from another form.
+  (function () {
+    var diagnosis = document.getElementById("diagnosis");
+    var wrap = document.getElementById("cancer-type-field");
+    var input = document.getElementById("cancer-type");
+    var form = document.querySelector('form[name="afff-case-review"]');
+    if (!diagnosis || !wrap || !input) return;
+
+    function sync() {
+      var show = diagnosis.value === "Other cancer";
+      wrap.hidden = !show;
+      input.required = show;
+      input.disabled = !show;
+      if (!show) input.value = "";
+    }
+
+    diagnosis.addEventListener("change", sync);
+    sync();
+
+    if (form) {
+      // Runs after every other submit handler, so a submit that form validation
+      // blocks (defaultPrevented) never sets the flag.
+      form.addEventListener("submit", function (e) {
+        setTimeout(function () {
+          try {
+            if (e.defaultPrevented) { sessionStorage.removeItem("lc_wait"); return; }
+            sessionStorage.setItem("lc_wait", JSON.stringify({ wait: "long", at: Date.now() }));
+          } catch (err) {}
+        }, 0);
+      });
+    }
   })();
 </script>
 <script src="form-validation.js"></script>

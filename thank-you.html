@@ -414,7 +414,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <span class="eyebrow">Submission Received</span>
     <h1 id="thank-you-heading">Thank you — your case review request has been received.</h1>
     <p class="lead" id="thank-you-lead">David Meldofsky, the California attorney behind Lawsuit Center, refers your request to a participating law firm that handles your category in your state. A firm that takes it for review contacts you by phone, email, or text, usually within a few business days.</p>
-    <p class="small-text">If no firm takes your request, you hear nothing further from us. Silence after a week or two is the answer, and legal deadlines keep running, so speak with a licensed attorney on your own.</p>
+    <p class="small-text" id="thank-you-wait">If no firm takes your request, you hear nothing further from us. Silence after a week or two is the answer, and legal deadlines keep running, so speak with a licensed attorney on your own.</p>
   </div>
 </section>
 
@@ -431,7 +431,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <p>Each step is independent. Some may not apply to your situation.</p>
     <div class="vsteps">
       <div class="vstep"><div class="vstep__num">01</div><div class="vstep__body"><h3>David refers your request to a participating firm</h3><p>Your category and your state decide which firm receives it. If the first firm passes, David may refer it to the next firm on his list. Some requests go to more than one firm at the same time.</p></div></div>
-      <div class="vstep"><div class="vstep__num">02</div><div class="vstep__body"><h3>A firm takes it for review and contacts you</h3><p>A firm that wants to look at your situation takes your request for review. Its intake team calls, emails, or texts you, usually within a few business days. If you gave an email address, a confirmation with a reference number may also arrive from Lawsuit Center.</p></div></div>
+      <div class="vstep"><div class="vstep__num">02</div><div class="vstep__body"><h3>A firm takes it for review and contacts you</h3><p id="thank-you-step2">A firm that wants to look at your situation takes your request for review. Its intake team calls, emails, or texts you, usually within a few business days. If you gave an email address, a confirmation with a reference number may also arrive from Lawsuit Center.</p></div></div>
       <div class="vstep"><div class="vstep__num">03</div><div class="vstep__body"><h3>Watch for unfamiliar numbers</h3><p>Case review calls often come from a number you do not recognize. Answer or return them. A firm that cannot reach you may move on. Questions in the meantime go to <a href="tel:+18009569876">(800) 956-9876</a>; calls are recorded.</p></div></div>
       <div class="vstep"><div class="vstep__num">04</div><div class="vstep__body"><h3>The reviewing firm decides</h3><p>Whether you have a case depends on your facts, and the firm that reviews them decides. You become a firm's client only when you sign an agreement with that firm. A submission does not guarantee contact, representation, or compensation.</p></div></div>
     </div>
@@ -527,6 +527,17 @@ document.addEventListener("DOMContentLoaded",function(){
     heading.textContent="Thank you — your "+category+" case review request has been received.";
     lead.textContent="David Meldofsky, the California attorney behind Lawsuit Center, refers your "+category+" request to a participating law firm that handles that category in your state. A firm that takes it for review contacts you by phone, email, or text, usually within a few business days.";
     sessionStorage.removeItem("lc_category");
+  }
+  // Longer wait (set by every afff-case-review submit while AFFF filings are stalled).
+  // Honored for one hour after the submit, then ignored.
+  var wait=null;
+  try{wait=JSON.parse(sessionStorage.getItem("lc_wait")||"null");sessionStorage.removeItem("lc_wait");}catch(e){wait=null;}
+  if(wait&&wait.wait==="long"&&typeof wait.at==="number"&&Date.now()-wait.at<3600000){
+    if(lead){lead.textContent="David Meldofsky, the California attorney behind Lawsuit Center, refers your request to a participating law firm that handles AFFF cases in your state. Very few new AFFF cases are being filed right now, so placing your request with a firm takes longer than usual. Allow up to 30 days for a firm to contact you.";}
+    var note=document.getElementById("thank-you-wait");
+    if(note){note.textContent="If no firm contacts you within 30 days, no firm took your request. Legal deadlines keep running while you wait, so you can speak with a licensed attorney on your own at any time.";}
+    var step=document.getElementById("thank-you-step2");
+    if(step){step.textContent="A firm that wants to look at your situation takes your request for review. Its intake team calls, emails, or texts you. For a request like yours, that can take up to 30 days. If you gave an email address, a confirmation with a reference number may also arrive from Lawsuit Center.";}
   }
 });
 </script>
