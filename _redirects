@@ -1,3 +1,26 @@
+# BEGIN BLOCKED REPO TOOLING (managed by generate_redirects.py - do not edit)
+/add_attribution.py  /404.html  404!
+/add_footer_attorney.py  /404.html  404!
+/add_footer_phone.py  /404.html  404!
+/add_lead_events.py  /404.html  404!
+/add_page_dates.py  /404.html  404!
+/add_phone_line.py  /404.html  404!
+/add_time_theme.py  /404.html  404!
+/check_consumer_readability.py  /404.html  404!
+/check_date_consistency.py  /404.html  404!
+/generate-sitemap.py  /404.html  404!
+/generate_redirects.py  /404.html  404!
+/inline_footer.py  /404.html  404!
+/lastmod-skip-commits.txt  /404.html  404!
+/netlify.toml  /404.html  404!
+/perf_head.py  /404.html  404!
+/set_footer_legal.py  /404.html  404!
+/set_intake_wording.py  /404.html  404!
+/utm_sweep.py  /404.html  404!
+/netlify/*  /404.html  404!
+/.github/*  /404.html  404!
+# END BLOCKED REPO TOOLING
+
 https://lawsuits.center/*      https://lawsuit.center/:splat      301!
 https://www.lawsuits.center/*  https://lawsuit.center/:splat      301!
 
@@ -113,6 +136,7 @@ https://www.lawsuits.center/*  https://lawsuit.center/:splat      301!
 /real-estate-property-lawsuits.html  /real-estate-property-lawsuits  301!
 /reproductive-case-review.html  /reproductive-case-review  301!
 /resources.html  /resources  301!
+/roblox-case-review.html  /roblox-case-review  301!
 /roundup-lawsuit.html  /roundup-lawsuit  301!
 /roundup-lawyers.html  /roundup-lawyers  301!
 /rushlow-v-altman-lawsuit.html  /rushlow-v-altman-lawsuit  301!
