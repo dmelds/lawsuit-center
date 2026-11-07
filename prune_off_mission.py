@@ -19,7 +19,8 @@ What it does, in order:
      david-meldofsky, how-case-review-works, advertising-disclosure,
      contact and resources is rewritten to describe the referral fee only.
   4. Cleans up what the removals leave empty: card grids, button rows,
-     hub sections and their in-page nav links.
+     hub sections and their in-page nav links. Breadcrumb structured data
+     loses the step for a deleted page, and the steps after it are renumbered.
   5. Removes the deleted pages from search.js and llms.txt.
   6. Moves dateModified and the visible Updated stamp on the pages whose
      prose was rewritten (DATED below). Pure link and block removals are
@@ -66,6 +67,8 @@ CUT = [
     "stock-market-fraud-lawsuits", "what-to-do-after-being-sued",
     # paid placement program
     "for-law-firms", "marketing-packages", "law-firm-inquiry",
+    # general overviews with no case review behind them (cut November 7)
+    "consumer-lawsuits", "class-action-lawsuits",
 ]
 CUTSET = set(CUT)
 
@@ -270,6 +273,30 @@ def realternate_cat_sections(html):
     return "".join(out)
 
 
+LD_BLOCK = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
+LD_ITEM = re.compile(r',?\s*\{\s*"@type":\s*"ListItem",\s*"position":\s*\d+,\s*"name":\s*"[^"]*",\s*'
+                     r'"item":\s*"https://lawsuit\.center/([a-z0-9-]+)"\s*\}')
+LD_URL = re.compile(r'"https://lawsuit\.center/(?:es/)?([a-z0-9-]+)"')
+
+
+def fix_breadcrumb_ld(html, notes):
+    """Drop BreadcrumbList steps that point at a deleted page and renumber the
+    positions that follow, so structured data matches the visible trail."""
+    def block(m):
+        body = m.group(2)
+        if "BreadcrumbList" not in body:
+            return m.group(0)
+        new = LD_ITEM.sub(lambda i: "" if i.group(1) in CUTSET else i.group(0), body)
+        if new == body:
+            return m.group(0)
+        new = new.replace("[,", "[")
+        n = iter(range(1, 100))
+        new = re.sub(r'"position":\s*\d+', lambda _: '"position": %d' % next(n), new)
+        notes.append("breadcrumb step")
+        return m.group(1) + new + m.group(3)
+    return LD_BLOCK.sub(block, html)
+
+
 # ---------------------------------------------------------------- page edits
 
 def section_with(html, marker, tag="section"):
@@ -403,7 +430,9 @@ def sponsoring_firm(html, rel, notes, problems):
     return html
 
 
-# Exact replacements per page: (old, new). Old must be found once, or new
+# Exact replacements per page: (old, new). The Consumer & Financial rewrites
+# on index and lawsuits were dropped November 7, when both pages were rebuilt
+# and the consumer and class action overviews joined CUT. Old must be found once, or new
 # must already be present (rerun). A replacement whose new text is "" removes.
 EDITS = {
     "index.html": [
@@ -416,38 +445,12 @@ EDITS = {
          """        <div class="trust__title">No added cost</div>
         <div class="trust__desc">Any referral fee comes from the firm's attorney fee. Your fee stays the same.</div>"""),
         (" When firms pay for visibility on a category page, we label it.", ""),
-        ("""        <h3 class="cat__name">Consumer &amp; Financial</h3>
-        <p class="cat__desc">Consumer protection, banking, lending, billing, and financial disputes.</p>""",
-         """        <h3 class="cat__name">Consumer Protection</h3>
-        <p class="cat__desc">False advertising, hidden fees, billing practices, and defective products.</p>"""),
         ("SECTION:<h2>Founding Sponsor Pilot.</h2>", ""),
         ("SECTION:<h3>Been sued or received legal papers?</h3>", ""),
     ],
     "lawsuits.html": [
         ("SECTION:<h2>Accidents, negligence, and serious harm.</h2>", ""),
         ("SECTION:<h2>Business disputes and workplace lawsuits.</h2>", ""),
-        ("""      <span class="eyebrow">Consumer &amp; Financial</span>
-      <h2>Consumer, banking, lending, and financial lawsuits.</h2>
-      <p>Lawsuit topics involving consumer protection, financial products, banking practices, lending, credit reporting, debt collection, investment losses, and related class action claims.</p>""",
-         """      <span class="eyebrow">Consumer &amp; Class Action</span>
-      <h2>Consumer protection and class action lawsuits.</h2>
-      <p>Lawsuit topics involving false advertising, hidden fees, defective products, and claims brought on behalf of a large group.</p>"""),
-        ("""        <h3>Consumer Lawsuits</h3>
-        <p>False advertising, billing disputes, defective products, scams, privacy issues, and consumer protection claims.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>""",
-         """        <h3>Consumer Lawsuits</h3>
-        <p>False advertising, billing disputes, defective products, scams, privacy issues, and consumer protection claims.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="class-action-lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Class Action Lawsuits</h3>
-        <p>How class actions work, who counts as a class member, and how settlements are paid out.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>"""),
-        ('<a href="#consumer-financial">Consumer &amp; Financial</a>',
-         '<a href="#consumer-financial">Consumer &amp; Class Action</a>'),
         ('<a href="#personal-injury">Personal Injury</a>', ""),
         ('<a href="#business-employment">Business &amp; Employment</a>', ""),
         (" These pages may include sponsored law firm visibility &mdash; see the advertising disclosure for details.", ""),
@@ -676,6 +679,7 @@ def process_html(rel, html):
     html = intake_sponsor_p(html, notes)
     html = sponsoring_firm(html, rel, notes, problems)
     html = featured_to_cta(html, notes, problems, spanish)
+    html = fix_breadcrumb_ld(html, notes)
     html = remove_links(html, notes)
     html = remove_empty(html, notes)
     if rel == "lawsuits.html":
@@ -729,6 +733,10 @@ def check(root):
         for m in HREF.finditer(html):
             if target_slug(m.group(1)):
                 bad.append("%s links to %s" % (rel, target_slug(m.group(1))))
+        for m in LD_BLOCK.finditer(html):
+            for u in LD_URL.finditer(m.group(2)):
+                if u.group(1) in CUTSET:
+                    bad.append("%s structured data points to %s" % (rel, u.group(1)))
         body = re.sub(r"<(script|style)\b.*?</\1>", "", html, flags=re.S)
         body = re.sub(r'<div class="site-footer__legal">.*?</div>', "", body, flags=re.S)
         for m in LEFTOVER.finditer(body):
