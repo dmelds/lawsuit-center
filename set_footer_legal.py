@@ -6,7 +6,8 @@ pages that already carry one, so a change to footer.html reaches nothing on
 its own. This sweep rewrites the site-footer__legal block on each page.
 
 The block is matched by its text, whitespace ignored, so the sweep touches a
-page only when it carries one of the known old texts (English or Spanish) and
+page only when it carries one of the known old texts (the pre-10/12/26 text or
+the 10/12/26 text that still named sponsored visibility) (English or Spanish) and
 leaves any other wording alone and reported. A page that already carries the
 new text is left alone, so this is safe to rerun. footer.html is updated too,
 so a page converted by inline_footer.py later carries the new text from the
@@ -35,7 +36,7 @@ OLD_EN = (
     "by participating law firms, legal advertisers, or third-party intake providers, depending on the "
     "claim category and availability."
 )
-NEW_EN = (
+PRIOR_EN = (
     "Educational information only, not legal advice. Lawsuit Center is the intake and referral "
     "practice of David Meldofsky, a California attorney. Information you submit is referred by him "
     "to participating law firms, which decide whether to follow up. Using this site or submitting "
@@ -51,7 +52,7 @@ OLD_ES = (
     "participantes, anunciantes legales o proveedores externos de admisión de casos, según la "
     "categoría del reclamo y la disponibilidad."
 )
-NEW_ES = (
+PRIOR_ES = (
     "Información educativa solamente, no asesoría legal. Lawsuit Center es la práctica de admisión y "
     "referidos de David Meldofsky, abogado de California. La información que usted envía es referida "
     "por él a firmas de abogados participantes, que deciden si dan seguimiento. Usar este sitio o enviar "
@@ -59,6 +60,16 @@ NEW_ES = (
     "se convierte en cliente de una firma solo cuando firma un acuerdo con esa firma. Algunas páginas "
     "incluyen publicidad de abogados o visibilidad patrocinada de firmas legales, señalada donde aparece."
 )
+
+# Paid placement retired 11/7/26: the sponsored-visibility clause is gone. The
+# 10/12/26 wording above (PRIOR_*) is now an old text this sweep replaces.
+NEW_EN = PRIOR_EN.replace(
+    "Some pages include attorney advertising or sponsored law firm visibility, labeled where it appears.",
+    "Some pages include attorney advertising, labeled where it appears.")
+NEW_ES = PRIOR_ES.replace(
+    "Algunas páginas incluyen publicidad de abogados o visibilidad patrocinada de firmas legales, señalada donde aparece.",
+    "Algunas páginas incluyen publicidad de abogados, señalada donde aparece.")
+assert NEW_EN != PRIOR_EN and NEW_ES != PRIOR_ES
 
 BLOCK_RE = re.compile(r'(<div class="site-footer__legal">)(.*?)(</div>)', re.S)
 
@@ -89,9 +100,9 @@ def sweep(rel, html):
     cur = norm(m.group(2))
     if cur in (NEW_EN, NEW_ES):
         return html, []
-    if cur == OLD_EN:
+    if cur in (OLD_EN, PRIOR_EN):
         new = NEW_EN
-    elif cur == OLD_ES:
+    elif cur in (OLD_ES, PRIOR_ES):
         new = NEW_ES
     else:
         return html, ["NO KNOWN LEGAL TEXT (left alone)"]
