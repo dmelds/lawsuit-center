@@ -320,21 +320,32 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 :root[data-theme="light"] .nav__links.is-open a,
 :root[data-theme="light"] .site-nav.open a { color: var(--ink); }
 
-/* Homepage case grid: compact tiles so 16 cases fit in about four short rows. */
-.hero--categories .cats { gap: 10px; }
-.hero--categories .cat { min-height: 0; padding: 14px 16px 13px; gap: 4px; border-radius: 12px; }
-.hero--categories .cat:hover { transform: translateY(-2px); }
-.hero--categories .cat__name { font-size: 15.5px; gap: 6px; margin: 0; }
-.hero--categories .cat__desc { font-size: 13px; line-height: 1.45; margin: 0; flex-grow: 0; }
-.hero--categories .cat__more { font-size: 12px; margin-top: auto; padding-top: 4px; }
-.hero--categories .cat__badge { padding: 2px 8px; font-size: 10px; }
-@media (max-width: 1100px) { .hero--categories .cats { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 900px) { .hero--categories .cats { grid-template-columns: 1fr 1fr; } }
+/* Homepage case picker: free tools on top, the 14 cases grouped by type in compact lists. */
+.case-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.case-tool { display: grid; grid-template-columns: auto 1fr; grid-template-areas: "badge name" "badge desc"; column-gap: 14px; align-items: center; padding: 14px 18px; border: 1px solid rgba(212,162,78,.4); border-radius: 12px; background: linear-gradient(180deg, rgba(212,162,78,.06), rgba(212,162,78,.01)); text-decoration: none; transition: border-color .2s var(--ease); }
+.case-tool:hover { border-color: var(--amber); text-decoration: none; }
+.case-tool__badge { grid-area: badge; padding: 3px 9px; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); background: rgba(212,162,78,.15); border: 1px solid rgba(212,162,78,.35); border-radius: 999px; white-space: nowrap; }
+.case-tool__name { grid-area: name; font-family: var(--display); font-weight: 600; font-size: 16px; line-height: 1.25; color: var(--ink); }
+.case-tool__name::after { content: " \2192"; color: var(--amber); }
+.case-tool__desc { grid-area: desc; font-size: 13px; line-height: 1.45; color: var(--ink-muted); }
+.case-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: stretch; }
+.case-group { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 8px 8px; }
+.case-group__title { margin: 0 10px 6px; font-family: var(--body); font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--amber); }
+.case-group__list { list-style: none; margin: 0; padding: 0; }
+.case-group__list li + li { border-top: 1px solid var(--border); }
+.case-row { display: block; position: relative; padding: 10px 28px 10px 10px; border-radius: 8px; text-decoration: none; transition: background .15s var(--ease); }
+.case-row:hover { background: var(--surface-2); text-decoration: none; }
+.case-row::after { content: "\2192"; position: absolute; right: 10px; top: 10px; color: var(--amber); transition: transform .15s var(--ease); }
+.case-row:hover::after { transform: translateX(3px); }
+.case-row__name { display: block; font-family: var(--display); font-weight: 600; font-size: 15.5px; line-height: 1.3; color: var(--ink); }
+.case-row__desc { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.45; color: var(--ink-muted); }
+@media (max-width: 1100px) { .case-groups { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 760px) {
-  .hero--categories .cats { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .hero--categories .cat { padding: 12px 12px 11px; }
-  .hero--categories .cat__name { font-size: 14.5px; }
-  .hero--categories .cat__desc { display: none; }
+  .case-tools { grid-template-columns: 1fr; gap: 8px; }
+  .case-tool { padding: 12px 14px; }
+  .case-groups { grid-template-columns: 1fr; gap: 10px; }
+  .case-row__desc { display: none; }
+  .case-row { padding: 11px 28px 11px 10px; }
 }
 </style>
 <!-- LC-LIGHT-CSS:END -->
@@ -423,87 +434,53 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </form>
 
     <h2 class="hero-cats__title">Pick your category, or run a free check first.</h2>
-    <div class="cats">
-      <a class="cat cat--tool" href="pfas-exposure-checker">
-        <h3 class="cat__name">PFAS Exposure Checker <span class="cat__badge">Free Tool</span></h3>
-        <p class="cat__desc">Check location, water source, and timeline in minutes.</p>
-        <span class="cat__more">Open checker</span>
+    <div class="case-tools">
+      <a class="case-tool" href="pfas-exposure-checker">
+        <span class="case-tool__badge">Free Tool</span>
+        <span class="case-tool__name">PFAS Exposure Checker</span>
+        <span class="case-tool__desc">Check location, water source, and timeline in minutes.</span>
       </a>
-      <a class="cat cat--tool" href="cancer-exposure-checker">
-        <h3 class="cat__name">Cancer Exposure Checker <span class="cat__badge">Free Tool</span></h3>
-        <p class="cat__desc">Match a diagnosis and exposure history to active categories.</p>
-        <span class="cat__more">Open checker</span>
+      <a class="case-tool" href="cancer-exposure-checker">
+        <span class="case-tool__badge">Free Tool</span>
+        <span class="case-tool__name">Cancer Exposure Checker</span>
+        <span class="case-tool__desc">Match a diagnosis and exposure history to active categories.</span>
       </a>
-      <a class="cat" href="afff-case-review">
-        <h3 class="cat__name">AFFF Firefighting Foam</h3>
-        <p class="cat__desc">Occupational, military, and community water exposure to firefighting foam.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="openai-case-review">
-        <h3 class="cat__name">ChatGPT and OpenAI</h3>
-        <p class="cat__desc">Wrongful death, self-harm, and harm tied to ChatGPT use.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="depo-provera-case-review">
-        <h3 class="cat__name">Depo-Provera</h3>
-        <p class="cat__desc">Long-term Depo-Provera use and brain tumor claims.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="hair-relaxer-case-review">
-        <h3 class="cat__name">Hair Relaxer</h3>
-        <p class="cat__desc">Chemical straightener use and uterine or ovarian cancer claims.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="mesothelioma-case-review">
-        <h3 class="cat__name">Mesothelioma and Asbestos</h3>
-        <p class="cat__desc">Occupational, residential, and product-based asbestos claims.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="ozempic-case-review">
-        <h3 class="cat__name">Ozempic and GLP-1 Drugs</h3>
-        <p class="cat__desc">Stomach and vision injuries after Ozempic, Wegovy, and other GLP-1 shots.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="pesticide-case-review?situation=Paraquat%20%2F%20Parkinson%27s#case-review-form">
-        <h3 class="cat__name">Paraquat</h3>
-        <p class="cat__desc">Herbicide exposure and Parkinson's disease claims.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="pfas-case-review">
-        <h3 class="cat__name">PFAS Water Contamination</h3>
-        <p class="cat__desc">Drinking water exposure to forever chemicals and related illness.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="pesticide-case-review?situation=Roundup%20%2F%20Non-Hodgkin%20Lymphoma#case-review-form">
-        <h3 class="cat__name">Roundup</h3>
-        <p class="cat__desc">Glyphosate weed killer use and non-Hodgkin lymphoma claims.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="social-media-case-review">
-        <h3 class="cat__name">Social Media Addiction</h3>
-        <p class="cat__desc">Mental-health harm tied to platform use by minors.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="suboxone-case-review">
-        <h3 class="cat__name">Suboxone Tooth Decay</h3>
-        <p class="cat__desc">Dental damage after using Suboxone film.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="talcum-powder-case-review">
-        <h3 class="cat__name">Talcum Powder</h3>
-        <p class="cat__desc">Long-term talc or baby powder use and ovarian cancer claims.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="tylenol-case-review">
-        <h3 class="cat__name">Tylenol and Autism</h3>
-        <p class="cat__desc">Acetaminophen use in pregnancy and a child's autism or ADHD.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
-      <a class="cat" href="video-game-case-review">
-        <h3 class="cat__name">Video Games and Roblox</h3>
-        <p class="cat__desc">Compulsive gaming harm in minors tied to game design and monetization.</p>
-        <span class="cat__more">Start free review</span>
-      </a>
+    </div>
+    <div class="case-groups">
+      <div class="case-group">
+        <h3 class="case-group__title">Medications</h3>
+        <ul class="case-group__list">
+          <li><a class="case-row" href="depo-provera-case-review"><span class="case-row__name">Depo-Provera</span><span class="case-row__desc">Long-term Depo-Provera use and brain tumor claims.</span></a></li>
+          <li><a class="case-row" href="ozempic-case-review"><span class="case-row__name">Ozempic and GLP-1 Drugs</span><span class="case-row__desc">Stomach and vision injuries after Ozempic, Wegovy, and other GLP-1 shots.</span></a></li>
+          <li><a class="case-row" href="suboxone-case-review"><span class="case-row__name">Suboxone Tooth Decay</span><span class="case-row__desc">Dental damage after using Suboxone film.</span></a></li>
+          <li><a class="case-row" href="tylenol-case-review"><span class="case-row__name">Tylenol and Autism</span><span class="case-row__desc">Acetaminophen use in pregnancy and a child's autism or ADHD.</span></a></li>
+        </ul>
+      </div>
+      <div class="case-group">
+        <h3 class="case-group__title">Chemicals and water</h3>
+        <ul class="case-group__list">
+          <li><a class="case-row" href="afff-case-review"><span class="case-row__name">AFFF Firefighting Foam</span><span class="case-row__desc">Occupational, military, and community water exposure to firefighting foam.</span></a></li>
+          <li><a class="case-row" href="pesticide-case-review?situation=Paraquat%20%2F%20Parkinson%27s#case-review-form"><span class="case-row__name">Paraquat</span><span class="case-row__desc">Herbicide exposure and Parkinson's disease claims.</span></a></li>
+          <li><a class="case-row" href="pfas-case-review"><span class="case-row__name">PFAS Water Contamination</span><span class="case-row__desc">Drinking water exposure to forever chemicals and related illness.</span></a></li>
+          <li><a class="case-row" href="pesticide-case-review?situation=Roundup%20%2F%20Non-Hodgkin%20Lymphoma#case-review-form"><span class="case-row__name">Roundup</span><span class="case-row__desc">Glyphosate weed killer use and non-Hodgkin lymphoma claims.</span></a></li>
+        </ul>
+      </div>
+      <div class="case-group">
+        <h3 class="case-group__title">Cancer and asbestos</h3>
+        <ul class="case-group__list">
+          <li><a class="case-row" href="hair-relaxer-case-review"><span class="case-row__name">Hair Relaxer</span><span class="case-row__desc">Chemical straightener use and uterine or ovarian cancer claims.</span></a></li>
+          <li><a class="case-row" href="mesothelioma-case-review"><span class="case-row__name">Mesothelioma and Asbestos</span><span class="case-row__desc">Occupational, residential, and product-based asbestos claims.</span></a></li>
+          <li><a class="case-row" href="talcum-powder-case-review"><span class="case-row__name">Talcum Powder</span><span class="case-row__desc">Long-term talc or baby powder use and ovarian cancer claims.</span></a></li>
+        </ul>
+      </div>
+      <div class="case-group">
+        <h3 class="case-group__title">Apps, games, and AI</h3>
+        <ul class="case-group__list">
+          <li><a class="case-row" href="openai-case-review"><span class="case-row__name">ChatGPT and OpenAI</span><span class="case-row__desc">Wrongful death, self-harm, and harm tied to ChatGPT use.</span></a></li>
+          <li><a class="case-row" href="social-media-case-review"><span class="case-row__name">Social Media Addiction</span><span class="case-row__desc">Mental-health harm tied to platform use by minors.</span></a></li>
+          <li><a class="case-row" href="video-game-case-review"><span class="case-row__name">Video Games and Roblox</span><span class="case-row__desc">Compulsive gaming harm in minors tied to game design and monetization.</span></a></li>
+        </ul>
+      </div>
     </div>
 
     <div class="hero-cats__footer">
