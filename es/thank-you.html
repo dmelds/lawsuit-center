@@ -413,14 +413,14 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="check"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14l5 5L23 8"/></svg></div>
     <span class="eyebrow">Envío Recibido</span>
     <h1 id="thank-you-heading">Gracias, su solicitud de revisión de caso ha sido recibida.</h1>
-    <p class="lead" id="thank-you-lead">Su información ha sido recibida. Un profesional legal participante, un anunciante legal o un proveedor de admisión puede contactarlo al número de teléfono o correo electrónico que proporcionó, típicamente dentro de 1 a 3 días hábiles si su envío parece coincidir con una ruta de revisión disponible.</p>
+    <p class="lead" id="thank-you-lead">Su información ha sido recibida. David Meldofsky, el abogado de California detrás de Lawsuit Center, refiere su solicitud a una firma de abogados participante que maneja su categoría en su estado. Esa firma puede contactarlo al número de teléfono o correo electrónico que proporcionó, típicamente dentro de 1 a 3 días hábiles si su envío parece coincidir con una ruta de revisión disponible.</p>
     <p class="small-text">Si no recibe respuesta, no significa necesariamente que su situación no sea válida. No todas las categorías tienen una ruta de revisión activa en todo momento.</p>
   </div>
 </section>
 
 <section class="legal-note">
   <div class="container container--narrow">
-    <p>Lawsuit Center no es una firma de abogados y no brinda asesoría legal. Enviar información no crea una relación abogado-cliente.</p>
+    <p>Lawsuit Center es la práctica de admisión y referidos de David Meldofsky, abogado de California, y no brinda asesoría legal a través de este sitio. Enviar información no crea una relación abogado-cliente.</p>
   </div>
 </section>
 
@@ -431,7 +431,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <p>Cada paso es independiente. Algunos pueden no aplicar a su situación.</p>
     <div class="vsteps">
       <div class="vstep"><div class="vstep__num">01</div><div class="vstep__body"><h3>Su envío puede ser revisado para ver si encaja en una categoría</h3><p>La información que proporcionó puede ser revisada para determinar si parece coincidir con una categoría de demanda disponible, un patrón de reclamos o una ruta de revisión de casos.</p></div></div>
-      <div class="vstep"><div class="vstep__num">02</div><div class="vstep__body"><h3>Pueden contactarlo para pedirle más información</h3><p>Si su situación parece coincidir con una ruta de revisión disponible, un abogado participante, un anunciante legal o un proveedor de admisión puede contactarlo por teléfono, correo electrónico o mensaje de texto.</p></div></div>
+      <div class="vstep"><div class="vstep__num">02</div><div class="vstep__body"><h3>Pueden contactarlo para pedirle más información</h3><p>Si su situación parece coincidir con una ruta de revisión disponible, David Meldofsky refiere su solicitud a una firma de abogados participante, que puede contactarlo por teléfono, correo electrónico o mensaje de texto.</p></div></div>
       <div class="vstep"><div class="vstep__num">03</div><div class="vstep__body"><h3>Esté atento a números desconocidos</h3><p>Las llamadas de revisión de casos pueden venir de un número que usted no reconozca. Si le dejan un mensaje de voz, devolver la llamada pronto puede ayudar a evitar demoras.</p></div></div>
       <div class="vstep"><div class="vstep__num">04</div><div class="vstep__body"><h3>Ningún resultado está garantizado</h3><p>Un envío no garantiza elegibilidad, compensación, representación, contacto, ni que alguna firma de abogados acepte su asunto.</p></div></div>
     </div>
@@ -524,7 +524,7 @@ document.addEventListener("DOMContentLoaded",function(){
   var lead=document.getElementById("thank-you-lead");
   if(category&&heading&&lead){
     heading.textContent="Gracias, su solicitud de revisión de caso sobre "+category+" ha sido recibida.";
-    lead.textContent="Su envío sobre "+category+" ha sido recibido. Un profesional legal participante, un anunciante legal o un proveedor de admisión puede contactarlo al número de teléfono o correo electrónico que proporcionó, típicamente dentro de 1 a 3 días hábiles si su envío parece coincidir con una ruta de revisión disponible.";
+    lead.textContent="Su envío sobre "+category+" ha sido recibido. David Meldofsky, el abogado de California detrás de Lawsuit Center, refiere su solicitud a una firma de abogados participante que maneja esa categoría en su estado. Esa firma puede contactarlo al número de teléfono o correo electrónico que proporcionó, típicamente dentro de 1 a 3 días hábiles si su envío parece coincidir con una ruta de revisión disponible.";
     sessionStorage.removeItem("lc_category");
   }
 });
