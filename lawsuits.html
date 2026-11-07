@@ -277,8 +277,16 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 .jump-nav .jump-nav__label { flex-shrink: 0; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); padding-right: 6px; white-space: nowrap; }
 .jump-nav .jump-nav__inner a { color: var(--ink); background: var(--surface-2); border-color: var(--border-strong); font-weight: 600; }
 .jump-nav .jump-nav__inner a:hover, .jump-nav .jump-nav__inner a:focus-visible { border-color: var(--amber); color: var(--ink); background: rgba(212,162,78,.14); }
-#free-tools, #active-cases { scroll-margin-top: 160px; }
-@media (max-width: 760px) { #free-tools, #active-cases { scroll-margin-top: 140px; } }
+.jump-nav, :root[data-theme="light"] .jump-nav { position: static; top: auto; background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.jump-nav .jump-nav__inner { flex-wrap: wrap; overflow: visible; row-gap: 10px; padding: 18px 0; }
+.jump-nav .jump-nav__label { width: 100%; padding: 0 0 2px; }
+@media (max-width: 760px) {
+  .jump-nav .jump-nav__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .jump-nav .jump-nav__label { grid-column: 1 / -1; }
+  .jump-nav .jump-nav__inner a { white-space: normal; text-align: center; padding: 8px 10px; font-size: 13px; line-height: 1.3; display: flex; align-items: center; justify-content: center; }
+}
+.cat-section, #free-tools, #active-cases { scroll-margin-top: 104px; }
+@media (max-width: 1200px) { .cat-section, #free-tools, #active-cases { scroll-margin-top: 92px; } }
 .dir-card__update { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
 .dir-card__update:hover { color: var(--ink); }
 .dir-card a.dir-card__cta:hover { color: var(--amber-bright); }
@@ -360,7 +368,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <nav class="jump-nav" aria-label="Jump to category">
   <div class="container">
     <div class="jump-nav__inner">
-      <span class="jump-nav__label">Jump to</span>
+      <span class="jump-nav__label">Jump to a section</span>
       <a href="#free-tools">Free Tools</a>
       <a href="#active-cases">Active Cases</a>
       <a href="#cancer">Cancer &amp; Exposure</a>
