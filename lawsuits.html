@@ -54,7 +54,7 @@
   "name": "Browse Lawsuits",
   "headline": "Browse Lawsuits",
   "url": "https://lawsuit.center/lawsuits",
-  "description": "Browse lawsuit categories on Lawsuit Center, including cancer diagnoses, asbestos, PFAS, toxic water, pesticide exposure, social media, video game, AI chatbot harm, product liability, drug injury, medical device, and personal injury case review topics.",
+  "description": "Browse the mass tort cases in court now and every free case review on Lawsuit Center, by category: cancer, asbestos, social media and video games, AI harm, water, pesticides, consumer products, and drugs and devices.",
   "datePublished": "2026-04-30T00:00:00-05:00",
   "dateModified": "2026-11-07T00:00:00-05:00",
   "isPartOf": { "@type": "WebSite", "name": "Lawsuit Center", "url": "https://lawsuit.center/" },
@@ -272,6 +272,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 :root[data-theme="light"] .site-nav.open { background: rgba(250,249,247,.98); }
 :root[data-theme="light"] .nav__links.is-open a,
 :root[data-theme="light"] .site-nav.open a { color: var(--ink); }
+#free-tools, #active-cases { scroll-margin-top: 160px; }
+@media (max-width: 760px) { #free-tools, #active-cases { scroll-margin-top: 140px; } }
 .dir-card__update { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
 .dir-card__update:hover { color: var(--ink); }
 .dir-card a.dir-card__cta:hover { color: var(--amber-bright); }
@@ -337,8 +339,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <span class="eyebrow">Browse Lawsuits</span>
     <h1>Find the case review or topic that <em>fits your situation.</em></h1>
     <p class="lede">
-      Each category below leads with a free case review path, followed by background pages on related lawsuits.
-      Choose the one closest to your diagnosis, exposure, or product &mdash; or start a general review if you're not sure.
+      Start with the cases in court now, or browse every case review by category below.
+      If you are not sure where your situation fits, start a general review.
     </p>
     <div class="actions">
       <a href="case-review" class="btn btn--amber btn--lg">Start General Case Review</a>
@@ -350,7 +352,26 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   </div>
 </section>
 
-<section class="section">
+<nav class="jump-nav" aria-label="Jump to category">
+  <div class="container">
+    <div class="jump-nav__inner">
+      <a href="#free-tools">Free Tools</a>
+      <a href="#active-cases">Active Cases</a>
+      <a href="#cancer">Cancer &amp; Exposure</a>
+      <a href="#asbestos">Asbestos &amp; Mesothelioma</a>
+      <a href="#digital-platforms">Social Media &amp; Video Games</a>
+      <a href="#ai-harm">AI Harm</a>
+      <a href="#water-environment">Water &amp; Environment</a>
+      <a href="#chemicals-pesticides">Chemicals &amp; Pesticides</a>
+      <a href="#products-food">Products &amp; Food</a>
+      <a href="#drugs-devices">Drugs &amp; Medical Devices</a>
+      <a href="#consumer-financial">Consumer &amp; Class Action</a>
+      <a href="#state-lawyers">State Lawyer Pages</a>
+    </div>
+  </div>
+</nav>
+
+<section id="free-tools" class="section">
   <div class="container">
     <div class="section__head section__head--left">
       <span class="eyebrow">Free Tools</span>
@@ -493,47 +514,29 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   </div>
 </section>
 
-<nav class="jump-nav" aria-label="Jump to category">
-  <div class="container">
-    <div class="jump-nav__inner">
-      <a href="#active-cases">Active Cases</a>
-      <a href="#cancer">Cancer &amp; Exposure</a>
-      <a href="#asbestos">Asbestos</a>
-      <a href="#digital-platforms">Digital Platforms</a>
-      <a href="#ai-harm">AI Harm</a>
-      <a href="#water-environment">Water &amp; Environment</a>
-      <a href="#chemicals-pesticides">Chemicals &amp; Pesticides</a>
-      <a href="#products-food">Products &amp; Food</a>
-      <a href="#drugs-devices">Drugs &amp; Medical Devices</a>
-      <a href="#consumer-financial">Consumer &amp; Class Action</a>
-      <a href="#state-lawyers">State Lawyer Pages</a>
-    </div>
-  </div>
-</nav>
-
 <section id="cancer" class="section cat-section">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Cancer &amp; Exposure</span>
       <h2>When a diagnosis may be tied to something you were exposed to.</h2>
-      <p>Mesothelioma, kidney, ovarian, lung, lymphoma, leukemia, bladder, liver, and uterine diagnoses are the ones most often reviewed against product use, workplace history, AFFF firefighting foam, or a contaminated water source. If you are not sure which case category applies, the <a href="cancer-exposure-checker">Cancer Exposure Checker</a> walks through it in four short questions, with no contact information required.</p>
+      <p>Start here if you have a cancer diagnosis and are not sure which case it fits. The <a href="cancer-exposure-checker">Cancer Exposure Checker</a> can help you narrow it down first.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
       <a class="dir-card" href="cancer-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Cancer Case Review</h3>
-        <p>Diagnoses possibly tied to consumer products (talc, hair relaxer, Roundup, Zantac), workplace or industrial exposure (asbestos, benzene, diesel), contaminated drinking water, AFFF firefighting foam, or Camp Lejeune.</p>
+        <p>A cancer diagnosis that may be tied to a product, a workplace, contaminated water, or firefighting foam.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
       <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/cancers-linked-to-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
+        <span class="dir-card__tag">Guide</span>
         <h3>Cancers Linked to Lawsuits</h3>
-        <p>Educational guide to the diagnoses most often discussed in toxic exposure, product liability, and environmental contamination claims, and how these cases are evaluated.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
+        <p>Lawsuit Informer&#x27;s guide to the cancers most often tied to exposure and product cases.</p>
+        <span class="dir-card__cta">Read the Guide &rarr;</span>
       </a>
     </div>
   </div>
@@ -542,44 +545,68 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <section id="asbestos" class="section section--surface cat-section">
   <div class="container">
     <div class="section__head">
-      <span class="eyebrow">Asbestos</span>
+      <span class="eyebrow">Asbestos &amp; Mesothelioma</span>
       <h2>Asbestos exposure and related illness.</h2>
-      <p>Asbestos claims often involve mesothelioma, asbestos-related lung cancer, or asbestosis, with exposure traced to military service, shipyards, construction, industrial facilities, or household secondhand exposure. Filing deadlines often begin from the date of diagnosis.</p>
+      <p>Asbestos cases usually involve mesothelioma, lung cancer, or asbestosis. The exposure often traces back to a job site, a shipyard, military service, or a family member&#x27;s work clothes.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
-      <a class="dir-card" href="asbestos-case-review">
+      <a class="dir-card" href="mesothelioma-case-review">
         <span class="dir-card__tag">Case Review</span>
-        <h3>Asbestos Case Review</h3>
-        <p>Mesothelioma, asbestos-related lung cancer, asbestosis, military or shipyard exposure, secondhand exposure, or other asbestos-related illness.</p>
+        <h3>Mesothelioma Case Review</h3>
+        <p>A mesothelioma diagnosis after work, military, household, or talc exposure.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="pleural-mesothelioma-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Pleural Mesothelioma Review</h3>
+        <p>Mesothelioma in the lining of the lungs.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="peritoneal-mesothelioma-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Peritoneal Mesothelioma Review</h3>
+        <p>Mesothelioma in the lining of the abdomen.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="lung-cancer-asbestos-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Lung Cancer Asbestos Review</h3>
-        <p>Submit basic information about asbestos exposure history and a lung cancer diagnosis for possible case review.</p>
+        <p>Lung cancer in someone with a history of asbestos exposure.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="asbestos-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Asbestos Case Review</h3>
+        <p>Asbestosis or another asbestos illness, or exposure without a diagnosis yet.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
-      <a class="dir-card dir-card--learn" href="asbestos-lawyers">
-        <span class="dir-card__tag">Lawyers</span>
-        <h3>Asbestos Lawyers by State</h3>
-        <p>Find an asbestos lawyer guide for your state, plus what asbestos attorneys review, time limits, and how to compare firms.</p>
-        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
-      </a>
       <a class="dir-card dir-card--learn" href="asbestos-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Asbestos Lawsuits</h3>
-        <p>Main asbestos hub: exposure history, illnesses commonly tied to asbestos, and how case review options work.</p>
+        <p>How asbestos claims work and which illnesses they cover.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="lung-cancer-from-asbestos-exposure">
         <span class="dir-card__tag">Overview</span>
         <h3>Lung Cancer From Asbestos Exposure</h3>
-        <p>Background on lung cancer claims involving asbestos exposure history and how legal review may apply.</p>
+        <p>How an asbestos history is weighed in a lung cancer claim.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="mesothelioma-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Mesothelioma Lawyers</h3>
+        <p>What mesothelioma lawyers do and what to ask before hiring one.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="asbestos-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Asbestos Lawyers by State</h3>
+        <p>State guides for California, Florida, Illinois, Louisiana, Michigan, New York, Pennsylvania, and Texas.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
     </div>
   </div>
@@ -588,28 +615,28 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <section id="digital-platforms" class="section cat-section">
   <div class="container">
     <div class="section__head">
-      <span class="eyebrow">Digital Platforms</span>
-      <h2>Social media and video game harm.</h2>
-      <p>Claims involving children and teens with documented mental health harm &mdash; anxiety, depression, eating disorders, self-harm &mdash; coinciding with heavy social media or compulsive gaming use. MDL 3047 has coordinated hundreds of social media cases in federal court.</p>
+      <span class="eyebrow">Social Media &amp; Video Games</span>
+      <h2>Social media and video game harm to young people.</h2>
+      <p>These cases involve children and teens whose mental health suffered with heavy social media use or compulsive gaming. Roblox cases also cover contact from a predator.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
       <a class="dir-card" href="social-media-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Social Media Case Review</h3>
-        <p>Children or teens with mental health harm tied to Instagram, TikTok, Snapchat, Facebook, YouTube, or similar platforms. Documented mental health harm, eating disorder-related concerns, hospitalization, or other serious outcomes.</p>
+        <p>A child or teen harmed by heavy use of Instagram, TikTok, Snapchat, YouTube, or a similar app.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="video-game-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Video Game Case Review</h3>
-        <p>Compulsive gaming, academic decline, mental health impact, or significant unauthorized in-game spending tied to a specific game or platform &mdash; particularly involving minors.</p>
+        <p>Compulsive gaming, falling grades, mental health harm, or large in-game spending by a minor.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="roblox-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Roblox Case Review</h3>
-        <p>Families whose child was contacted by an adult on Roblox, played it compulsively, or ran up Robux charges. Mental health harm tied to the platform is also reviewed.</p>
+        <p>A child contacted by an adult on Roblox, or harmed by compulsive play or Robux spending.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
@@ -618,38 +645,38 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       <a class="dir-card dir-card--learn" href="social-media-addiction-lawsuit">
         <span class="dir-card__tag">Overview</span>
         <h3>Social Media Addiction Lawsuit</h3>
-        <p>Background on allegations that platforms used addictive design features and contributed to youth mental-health harms.</p>
+        <p>What families say the apps were built to do, and who brings these claims.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="social-media-lawyers">
-        <span class="dir-card__tag">Lawyers</span>
-        <h3>Social Media Lawyers</h3>
-        <p>How attorneys evaluate youth social media harm and addiction claims, what records help, and how to compare firms.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="video-game-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
-        <h3>Video Game Lawsuit</h3>
-        <p>Claims alleging games like Roblox and Fortnite were designed to encourage compulsive play in minors. Coordinated in California, no settlement yet.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="video-game-lawyers">
-        <span class="dir-card__tag">Lawyers</span>
-        <h3>Video Game Lawyers</h3>
-        <p>How attorneys evaluate compulsive gaming claims, what gameplay and diagnosis records help, time limits for minors, and how to compare firms.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="instagram-lawsuit">
         <span class="dir-card__tag">Overview</span>
         <h3>Instagram Lawsuit</h3>
-        <p>What the Instagram claims involve, who may be affected, and how the cases are being handled.</p>
+        <p>The Instagram claims against Meta and who may be affected.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="tiktok-lawsuit">
         <span class="dir-card__tag">Overview</span>
         <h3>TikTok Lawsuit</h3>
-        <p>What the TikTok claims involve, who may be affected, and how the cases are being handled.</p>
+        <p>The TikTok claims and who may be affected.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="social-media-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Social Media Lawyers</h3>
+        <p>How lawyers look at youth social media cases and what records help.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="video-game-lawsuit">
+        <span class="dir-card__tag">Overview</span>
+        <h3>Video Game Lawsuit</h3>
+        <p>What families say game makers built into Roblox, Fortnite, and other games.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="video-game-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Video Game Lawyers</h3>
+        <p>How lawyers look at gaming addiction cases and the deadlines for minors.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
     </div>
   </div>
@@ -660,90 +687,78 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="section__head">
       <span class="eyebrow">AI Harm</span>
       <h2>AI chatbot harm, deepfakes, and image abuse.</h2>
-      <p>A small but fast-growing category of lawsuits against AI companies. One group alleges that sustained chatbot use contributed to wrongful death by suicide, fatal drug interactions, acts of violence, or self-harm &mdash; pleaded mostly as strict products liability, negligence, and failure-to-warn rather than ordinary user-generated content. A second, newer group involves nonconsensual AI-generated images, deepfakes, and impersonation. The legal framework is developing and pending case outcomes are unpredictable.</p>
+      <p>Families are suing AI companies over deaths, overdoses, and violence that followed long chatbot use. Other cases involve fake intimate images made with AI tools.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
       <a class="dir-card" href="openai-case-review">
         <span class="dir-card__tag">Case Review</span>
-        <h3>OpenAI / ChatGPT Case Review</h3>
-        <p>Wrongful death by suicide, overdose or drug interaction, or act of violence preceded by sustained ChatGPT use; self-harm or mental-health crisis following sustained chatbot use; physical injury after relying on ChatGPT for medical, drug interaction, or safety information; or harm involving a minor.</p>
+        <h3>ChatGPT Case Review</h3>
+        <p>A death, overdose, self-harm, or injury that followed long ChatGPT use or ChatGPT advice.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="deepfake-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>AI Deepfakes &amp; Image Abuse</h3>
-        <p>Nonconsensual AI-generated intimate images or deepfakes of an adult or a minor, images that spread and were not removed, threats or sextortion, and resulting harm &mdash; including images generated with Grok and similar tools.</p>
+        <p>Fake intimate images of you or your child made with Grok or another AI tool.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="ai-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Other AI Harm</h3>
-        <p>An AI product that impersonated a professional, harm involving a chatbot beyond ChatGPT &mdash; including Character.AI &mdash; or other serious harm connected to an AI tool.</p>
+        <p>Harm from Character.AI, another chatbot, or an AI tool that posed as a professional.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
       <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/ai-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
+        <span class="dir-card__tag">Guide</span>
         <h3>AI Lawsuits Overview</h3>
-        <p>The top-level guide to AI litigation: who is being sued, the legal theories involved, and how the OpenAI, Grok, and Character.AI cases differ.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
+        <p>Lawsuit Informer&#x27;s guide to who is being sued over AI and why.</p>
+        <span class="dir-card__cta">Read the Guide &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/take-it-down-act?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>The TAKE IT DOWN Act Explained</h3>
-        <p>The federal law on nonconsensual intimate images and AI deepfakes &mdash; what it covers, the 48-hour platform removal duty, and victims' rights.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/grok-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Grok and xAI Lawsuits</h3>
-        <p>The deepfake-image litigation against xAI &mdash; nonconsensual AI-generated images, the class actions, and the city and state actions.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/character-ai-lawsuit?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Character.AI Lawsuits</h3>
-        <p>Teen-safety and wrongful death cases, the January 2026 settlements, and the state action alleging a chatbot posed as a licensed doctor.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/openai-school-shooting-lawsuits-ai-product-liability?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>OpenAI School Shooting Lawsuits</h3>
-        <p>Background on the federal lawsuits filed against OpenAI tied to mass shootings in Canada and Florida, and the product-versus-content framing question that determines whether these cases can move forward.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/chatgpt-fsu-shooting-lawsuit?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>FSU Shooting Lawsuit</h3>
-        <p>Inside the Chabba complaint: an eight-count federal lawsuit including a novel negligent entrustment theory applied to AI access, plus what the complaint alleges about the chat history.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="https://lawsuitinformer.com/chatgpt-overdose-lawsuit-scott?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Scott Overdose Lawsuit</h3>
-        <p>The first major AI-as-unauthorized-medical-advisor wrongful death case, where the family alleges ChatGPT advised it was safe to combine kratom and Xanax.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
+        <span class="dir-card__tag">Guide</span>
+        <h3>The TAKE IT DOWN Act</h3>
+        <p>Lawsuit Informer on the federal law that makes platforms remove fake intimate images.</p>
+        <span class="dir-card__cta">Read the Guide &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="winters-v-openai-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
+        <span class="dir-card__tag">Case Filing</span>
         <h3>Winters v. OpenAI</h3>
-        <p>A pastor relied on ChatGPT for medical guidance for a year and suffered blood clots in both lungs. The first case in the ChatGPT docket brought by a plaintiff who survived, with the complaint posted in full.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+        <p>A pastor says ChatGPT&#x27;s medical advice kept him home while blood clots formed in his lungs.</p>
+        <span class="dir-card__cta">Read the Case &rarr;</span>
       </a>
-      <a class="dir-card dir-card--learn" href="gourley-v-openai-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
-        <h3>Gourley v. OpenAI</h3>
-        <p>A student shot at Florida State University is suing OpenAI over the year of conversations the shooter had with ChatGPT. The first AI case brought by an injured bystander who never used the product, with the complaint posted in full.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+      <a class="dir-card dir-card--learn" href="jean-doe-v-openai-lawsuit">
+        <span class="dir-card__tag">Case Filing</span>
+        <h3>Jean Doe v. OpenAI</h3>
+        <p>A woman says ChatGPT walked her through a suicide attempt she survived.</p>
+        <span class="dir-card__cta">Read the Case &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="nadia-n-v-openai-lawsuit">
+        <span class="dir-card__tag">Case Filing</span>
+        <h3>Nadia N. v. OpenAI</h3>
+        <p>A widow says ChatGPT pushed her husband toward abuse and then his death.</p>
+        <span class="dir-card__cta">Read the Case &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="morales-v-openai-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
+        <span class="dir-card__tag">Case Filing</span>
         <h3>Morales v. OpenAI</h3>
-        <p>The widow of a Florida State University employee killed in the 2025 campus shooting is suing OpenAI and, for the first time in an FSU case, Sam Altman personally. Complaint posted in full.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+        <p>A widow sues OpenAI and Sam Altman over the FSU shooting that killed her husband.</p>
+        <span class="dir-card__cta">Read the Case &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="gourley-v-openai-lawsuit">
+        <span class="dir-card__tag">Case Filing</span>
+        <h3>Gourley v. OpenAI</h3>
+        <p>A student shot at Florida State sues OpenAI over the shooter&#x27;s ChatGPT use.</p>
+        <span class="dir-card__cta">Read the Case &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="rushlow-v-altman-lawsuit">
+        <span class="dir-card__tag">Case Filing</span>
+        <h3>Rushlow v. Altman</h3>
+        <p>A teacher who survived the Tumbler Ridge school shooting sues OpenAI and Sam Altman.</p>
+        <span class="dir-card__cta">Read the Case &rarr;</span>
       </a>
     </div>
   </div>
@@ -754,59 +769,71 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="section__head">
       <span class="eyebrow">Water &amp; Environment</span>
       <h2>Contaminated water and environmental exposure.</h2>
-      <p>Claims involving PFAS in drinking water, <a href="afff-case-review">AFFF firefighting foam</a>, military base contamination, industrial releases, or long-term environmental exposure through air, soil, or groundwater near contaminated sites. The <a href="pfas-exposure-checker">PFAS Exposure Checker</a> can help identify whether your location and timeline match a current contamination pattern.</p>
+      <p>These cases involve PFAS in drinking water, firefighting foam, and pollution from nearby plants or sites. The <a href="pfas-exposure-checker">PFAS Exposure Checker</a> can help you see where you fit.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
       <a class="dir-card" href="pfas-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>PFAS Case Review</h3>
-        <p>PFAS contamination, AFFF firefighting foam exposure, military base or airport exposure, kidney or testicular cancer, thyroid disease, or ulcerative colitis with possible PFAS link.</p>
+        <p>Kidney cancer, testicular cancer, thyroid disease, or ulcerative colitis after drinking PFAS-contaminated water.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="afff-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>AFFF Firefighting Foam Case Review</h3>
-        <p>Firefighting foam exposure on the job, at military installations, or at airports and training sites, and community water contamination traced to AFFF use.</p>
+        <p>Cancer after firefighting foam exposure on the job, on a base, or at an airport.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="camp-lejeune-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Camp Lejeune Case Review</h3>
+        <p>A Camp Lejeune claim filed with the Navy that is still waiting or was denied.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="toxic-water-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Toxic Water Case Review</h3>
-        <p>Contaminated drinking water, well water contamination, industrial chemical releases into community water supplies, or long-term water exposure with related health effects.</p>
+        <p>Illness after drinking contaminated city or well water.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="environmental-contamination-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Environmental Contamination Review</h3>
-        <p>Exposure through soil, groundwater, industrial sites, landfills, or surrounding community conditions tied to a specific contamination source.</p>
+        <p>Illness tied to polluted soil, groundwater, a landfill, or an industrial site.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="air-pollution-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Air Pollution Case Review</h3>
-        <p>Long-term air pollution exposure, industrial emissions, refinery or plant proximity, and respiratory or other health conditions tied to airborne contaminants.</p>
+        <p>Breathing or other health problems near a refinery, plant, or other emissions source.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
+      <a class="dir-card dir-card--learn" href="pfas-lawsuit">
+        <span class="dir-card__tag">Overview</span>
+        <h3>PFAS Lawsuit</h3>
+        <p>What PFAS cases involve and which diagnoses they cover.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="pfas-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>PFAS Lawyers</h3>
+        <p>How PFAS lawyers look at water, foam, and workplace exposure.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
+      </a>
       <a class="dir-card dir-card--learn" href="water-contamination-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Water Contamination Lawsuits</h3>
-        <p>Background on contaminated drinking water, groundwater, and long-term community water exposure claims.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="pfas-case-review">
-        <span class="dir-card__tag">Overview</span>
-        <h3>PFAS Water Contamination</h3>
-        <p>Forever chemicals in drinking water near military bases, airports, or industrial facilities, and how these claims have evolved.</p>
+        <p>Contaminated water claims beyond PFAS.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="environmental-contamination-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Environmental Contamination Lawsuits</h3>
-        <p>Background on exposure through air, soil, groundwater, industrial sites, or surrounding community conditions.</p>
+        <p>Claims tied to polluted air, soil, or groundwater near a site.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
     </div>
@@ -817,61 +844,55 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Chemicals &amp; Pesticides</span>
-      <h2>Chemical, pesticide, and neurological exposure.</h2>
-      <p>Claims involving long-term exposure to herbicides, pesticides, or other chemicals &mdash; including occupational exposure for farmers, landscapers, applicators, and workers, residential exposure for those living near agricultural or industrial operations, and neurological diagnoses possibly tied to chemical exposure.</p>
+      <h2>Pesticide, herbicide, and chemical exposure.</h2>
+      <p>These cases involve farmers, landscapers, and workers who handled weed killers or other chemicals, and people who lived near where they were sprayed.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
-      <a class="dir-card" href="paraquat-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
-        <h3>Paraquat Parkinson's Lawsuit</h3>
-        <p>Long-term paraquat or Gramoxone exposure linked to Parkinson's disease, consolidated in MDL 3004. Who may qualify and how to request a case review.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
-      </a>
       <a class="dir-card" href="pesticide-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Pesticide Case Review</h3>
-        <p>Glyphosate (Roundup), paraquat, chlorpyrifos, and other pesticide or herbicide exposure tied to non-Hodgkin lymphoma, Parkinson's disease, or other related diagnoses.</p>
+        <p>Non-Hodgkin lymphoma, Parkinson&#x27;s disease, or another illness after Roundup, paraquat, or other pesticide use.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="chemical-exposure-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Chemical Exposure Case Review</h3>
+        <p>Illness after exposure to chemicals at work, at home, or in a product.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="neurological-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Neurological Case Review</h3>
-        <p>Parkinson's disease, neuropathy, cognitive decline, movement disorders, or other neurological conditions with a possible exposure history &mdash; pesticides, chemicals, contaminated water, heavy metals, or medications.</p>
+        <p>Parkinson&#x27;s disease, neuropathy, or memory decline after chemical or pesticide exposure.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
-      <a class="dir-card dir-card--learn" href="chemical-exposure-lawsuits">
+      <a class="dir-card dir-card--learn" href="paraquat-lawsuit">
         <span class="dir-card__tag">Overview</span>
-        <h3>Chemical Exposure Lawsuits</h3>
-        <p>Toxic substances, repeated exposure, contaminated property, workplace exposure, or consumer products containing harmful chemicals.</p>
+        <h3>Paraquat Lawsuit</h3>
+        <p>Paraquat exposure and Parkinson&#x27;s disease claims.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="roundup-lawsuit">
         <span class="dir-card__tag">Overview</span>
         <h3>Roundup Lawsuit</h3>
-        <p>Glyphosate-based herbicides and alleged links to certain cancers, including non-Hodgkin lymphoma.</p>
+        <p>Glyphosate weed killer and non-Hodgkin lymphoma claims.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="roundup-lawyers">
         <span class="dir-card__tag">Lawyers</span>
         <h3>Roundup Lawyers</h3>
-        <p>How Roundup attorneys evaluate glyphosate exposure and non-Hodgkin lymphoma claims, what records help, and how to compare firms.</p>
+        <p>How Roundup lawyers look at exposure and diagnosis records.</p>
         <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
-      <a class="dir-card dir-card--learn" href="hair-relaxer-lawsuit">
+      <a class="dir-card dir-card--learn" href="chemical-exposure-lawsuits">
         <span class="dir-card__tag">Overview</span>
-        <h3>Hair Relaxer Lawsuit</h3>
-        <p>Chemical hair relaxer products and alleged long-term reproductive health risks.</p>
+        <h3>Chemical Exposure Lawsuits</h3>
+        <p>Claims tied to toxic chemicals at work, at home, or in products.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="hair-relaxer-lawyers">
-        <span class="dir-card__tag">Lawyers</span>
-        <h3>Hair Relaxer Lawyers</h3>
-        <p>How hair relaxer attorneys evaluate uterine cancer claims in MDL 3060, what records help, and how to compare firms.</p>
-        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
     </div>
   </div>
@@ -881,78 +902,102 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Products &amp; Food</span>
-      <h2>Consumer products, processed food, and reproductive injury.</h2>
-      <p>Claims involving allegedly defective consumer products, recalls, or harmful product design &mdash; emerging litigation involving ultra-processed food consumption tied to childhood-onset Type 2 diabetes or NAFLD &mdash; and reproductive injury claims tied to long-term use of specific products like hair relaxers and talcum powder.</p>
+      <h2>Consumer products, medicines in pregnancy, and food.</h2>
+      <p>These cases involve everyday products used for years, including talc, hair straighteners, baby food, and ultra-processed food.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
-      <a class="dir-card" href="consumer-product-case-review">
+      <a class="dir-card" href="talcum-powder-case-review">
         <span class="dir-card__tag">Case Review</span>
-        <h3>Consumer Product Case Review</h3>
-        <p>Allegedly defective, mislabeled, contaminated, or unsafe consumer products. Recalls, design defects, warning issues, or injuries tied to a specific product.</p>
+        <h3>Talcum Powder Case Review</h3>
+        <p>Ovarian cancer after years of using talc or baby powder.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="hair-relaxer-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Hair Relaxer Case Review</h3>
+        <p>Uterine cancer, ovarian cancer, or fibroids after years of chemical straightener use.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="tylenol-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Tylenol Case Review</h3>
+        <p>A child diagnosed with autism or ADHD after acetaminophen use in pregnancy.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="processed-food-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Processed Food Case Review</h3>
-        <p>Childhood-onset Type 2 diabetes, NAFLD, or other metabolic conditions following long-term ultra-processed food consumption &mdash; sugary drinks, packaged snacks, fast food.</p>
+        <p>Type 2 diabetes or fatty liver disease that began in childhood.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="reproductive-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Reproductive Injury Case Review</h3>
-        <p>Uterine cancer, ovarian cancer, fertility complications, or other reproductive harm tied to long-term hair relaxer use, talcum powder use, prenatal medication exposure, or chemical workplace exposure.</p>
+        <p>Uterine or ovarian cancer or fertility problems tied to a product or workplace exposure.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
-      <a class="dir-card" href="talcum-powder-case-review">
+      <a class="dir-card" href="consumer-product-case-review">
         <span class="dir-card__tag">Case Review</span>
-        <h3>Talcum Powder Case Review</h3>
-        <p>Long-term talc or baby powder use (including Johnson's Baby Powder and Shower to Shower) followed by an ovarian cancer diagnosis.</p>
+        <h3>Consumer Product Case Review</h3>
+        <p>An injury from a defective, mislabeled, or recalled product.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
+      <a class="dir-card dir-card--learn" href="talcum-powder-lawsuits">
+        <span class="dir-card__tag">Overview</span>
+        <h3>Talcum Powder Lawsuit</h3>
+        <p>Talc and ovarian cancer claims, and who may qualify.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="hair-relaxer-lawsuit">
+        <span class="dir-card__tag">Overview</span>
+        <h3>Hair Relaxer Lawsuit</h3>
+        <p>Chemical straightener and cancer claims.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="hair-relaxer-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Hair Relaxer Lawyers</h3>
+        <p>How hair relaxer lawyers look at use history and diagnosis records.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
+      </a>
       <a class="dir-card dir-card--learn" href="tylenol-autism-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
+        <span class="dir-card__tag">Overview</span>
         <h3>Tylenol Autism Lawsuit</h3>
-        <p>Claims alleging failure to warn about prenatal acetaminophen exposure and autism or ADHD. Litigation active but unsettled, federal appeal pending.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+        <p>Prenatal acetaminophen and autism or ADHD claims.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="baby-food-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
+        <span class="dir-card__tag">Overview</span>
         <h3>Baby Food Lawsuit</h3>
-        <p>Claims alleging heavy metals in baby foods from Gerber, Beech-Nut, and others, linked in litigation to autism and ADHD diagnoses. MDL 3101, no settlement yet.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+        <p>Heavy metals in baby food and autism or ADHD claims.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="baby-food-lawyers">
         <span class="dir-card__tag">Lawyers</span>
         <h3>Baby Food Lawyers</h3>
-        <p>How attorneys evaluate baby food claims, what purchase and diagnosis records help, time limits for minors, and how to compare firms.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+        <p>How baby food lawyers look at purchase and diagnosis records.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="processed-food-lawsuit">
-        <span class="dir-card__tag">Lawsuit</span>
+        <span class="dir-card__tag">Overview</span>
         <h3>Processed Food Lawsuit</h3>
-        <p>Claims alleging ultra processed foods were engineered for overconsumption, tied to childhood Type 2 diabetes and NAFLD. Early-stage, test case dismissed, no settlement.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
+        <p>Ultra-processed food and childhood diabetes or fatty liver claims.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="processed-food-lawyers">
         <span class="dir-card__tag">Lawyers</span>
         <h3>Processed Food Lawyers</h3>
-        <p>How attorneys evaluate early-stage UPF claims, why product specificity now drives viability, and how to compare firms.</p>
-        <span class="dir-card__cta">Learn More &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="talcum-powder-lawsuits">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Talcum Powder Lawsuit</h3>
-        <p>Background on the talcum powder ovarian cancer litigation (MDL 2738), who may qualify, settlements, and FAQs.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
+        <p>How lawyers look at early-stage processed food cases.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="product-liability-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Product Liability Lawsuits</h3>
-        <p>Background on allegedly defective, unsafe, mislabeled, contaminated, or harmful consumer products and devices.</p>
+        <p>How claims over defective or unsafe products work.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
     </div>
@@ -964,20 +1009,44 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="section__head">
       <span class="eyebrow">Drugs &amp; Medical Devices</span>
       <h2>Medications, devices, and reported injuries.</h2>
-      <p>Background on prescription medications, medical devices, implants, and other treatments where reported side effects, complications, recalls, or warning issues have led to litigation. For an injury that may relate to one of these, start with a general case review.</p>
+      <p>These cases involve prescription drugs and implanted devices tied to serious side effects. If your drug or device is not listed, start with a general case review.</p>
     </div>
     <h3 class="subhead">Request a Case Review</h3>
     <div class="dir-grid">
       <a class="dir-card" href="depo-provera-case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>Depo-Provera Case Review</h3>
-        <p>Long-term use of the Depo-Provera birth control injection (or generic medroxyprogesterone acetate) followed by a meningioma brain tumor diagnosis, surgery, radiation, or ongoing monitoring.</p>
+        <p>A meningioma brain tumor after the Depo-Provera shot.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="ozempic-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Ozempic Case Review</h3>
+        <p>A stomach or bowel injury after Ozempic, Wegovy, or another GLP-1 drug.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="ozempic-vision-loss-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Ozempic Vision Loss Review</h3>
+        <p>Sudden vision loss in one eye after a GLP-1 drug.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="suboxone-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Suboxone Case Review</h3>
+        <p>Tooth decay, broken teeth, or extractions after using Suboxone film.</p>
+        <span class="dir-card__cta">Request Review &rarr;</span>
+      </a>
+      <a class="dir-card" href="hernia-mesh-case-review">
+        <span class="dir-card__tag">Case Review</span>
+        <h3>Hernia Mesh Case Review</h3>
+        <p>Pain, infection, or revision surgery after a hernia mesh repair.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
       <a class="dir-card" href="case-review">
         <span class="dir-card__tag">Case Review</span>
         <h3>General Case Review</h3>
-        <p>For injuries possibly related to a medication, medical device, or implant. Describe the drug or device involved and the harm experienced.</p>
+        <p>An injury from a drug or device not listed here.</p>
         <span class="dir-card__cta">Request Review &rarr;</span>
       </a>
     </div>
@@ -985,89 +1054,88 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="dir-grid">
       <a class="dir-card dir-card--learn" href="depo-provera">
         <span class="dir-card__tag">Overview</span>
-        <h3>Depo-Provera Meningioma Lawsuit</h3>
-        <p>Background on the Depo-Provera meningioma litigation (MDL 3140), who may qualify, compensation, and FAQs.</p>
+        <h3>Depo-Provera Lawsuit</h3>
+        <p>Depo-Provera and meningioma claims, and who may qualify.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="depo-provera-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Depo-Provera Lawyers</h3>
+        <p>How Depo-Provera lawyers look at injection and diagnosis records.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="ozempic-lawsuit">
+        <span class="dir-card__tag">Overview</span>
+        <h3>Ozempic Lawsuit</h3>
+        <p>GLP-1 drug injury claims.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="suboxone-lawsuit">
+        <span class="dir-card__tag">Overview</span>
+        <h3>Suboxone Lawsuit</h3>
+        <p>Suboxone film and dental injury claims.</p>
+        <span class="dir-card__cta">Read Overview &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="hernia-mesh-lawyers">
+        <span class="dir-card__tag">Lawyers</span>
+        <h3>Hernia Mesh Lawyers</h3>
+        <p>How hernia mesh lawyers identify the product and review surgery records.</p>
+        <span class="dir-card__cta">Find a Lawyer &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="drug-injury-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Drug Injury Lawsuits</h3>
-        <p>Prescription medications, reported side effects, warning issues, and alleged medication-related injuries.</p>
+        <p>How claims over medication side effects work.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="medical-device-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Medical Device Lawsuits</h3>
-        <p>Implants, surgical mesh, joint replacements, complications, recalls, revision surgeries, or alleged defects.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="hernia-mesh-lawyers">
-        <span class="dir-card__tag">Find a Lawyer</span>
-        <h3>Hernia Mesh Lawyers</h3>
-        <p>Mesh complication and revision surgery claims, product identification, and how to compare device litigation firms.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="ozempic-lawsuit">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Ozempic / GLP-1 Lawsuits</h3>
-        <p>Certain GLP-1 medications and reported gastrointestinal complications or related injuries.</p>
-        <span class="dir-card__cta">Read Overview &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="suboxone-lawsuit">
-        <span class="dir-card__tag">Overview</span>
-        <h3>Suboxone Dental Injury Lawsuits</h3>
-        <p>Suboxone film users with tooth decay, broken or pulled teeth, or major dental work after daily use.</p>
+        <p>How claims over implants and other devices work.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
     </div>
   </div>
 </section>
-
 
 <section id="consumer-financial" class="section cat-section">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">Consumer &amp; Class Action</span>
       <h2>Consumer protection and class action lawsuits.</h2>
-      <p>Lawsuit topics involving false advertising, hidden fees, defective products, and claims brought on behalf of a large group.</p>
+      <p>Background on consumer protection claims and on how class actions work.</p>
     </div>
     <h3 class="subhead">Background &amp; Overview</h3>
     <div class="dir-grid">
       <a class="dir-card dir-card--learn" href="consumer-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Consumer Lawsuits</h3>
-        <p>False advertising, billing disputes, defective products, scams, privacy issues, and consumer protection claims.</p>
+        <p>False advertising, hidden fees, and consumer protection claims.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="class-action-lawsuits">
         <span class="dir-card__tag">Overview</span>
         <h3>Class Action Lawsuits</h3>
-        <p>How class actions work, who counts as a class member, and how settlements are paid out.</p>
+        <p>How class actions work and how settlements are paid out.</p>
         <span class="dir-card__cta">Read Overview &rarr;</span>
       </a>
     </div>
   </div>
 </section>
 
-
-
-
-
-
 <section id="state-lawyers" class="section section--surface cat-section">
   <div class="container">
     <div class="section__head">
       <span class="eyebrow">State Lawyer Pages</span>
-      <h2>State-specific lawyer information.</h2>
-      <p>Reader-focused information about lawyers in specific states, including questions to ask before hiring. Start with the <a href="asbestos-lawyers">national asbestos lawyers hub</a>, then choose your state.</p>
+      <h2>State-specific asbestos lawyer information.</h2>
+      <p>Each state guide covers local exposure sites, filing deadlines, and questions to ask before hiring.</p>
     </div>
-
     <h3 class="subhead">Asbestos Lawyers by State</h3>
     <div class="dir-grid">
       <a class="dir-card dir-card--learn" href="asbestos-lawyers">
         <span class="dir-card__tag">Hub</span>
         <h3>Asbestos Lawyers (All States)</h3>
-        <p>National overview of what asbestos lawyers do, deadlines, and how to compare firms, with links to every state guide.</p>
+        <p>What asbestos lawyers do nationwide, with links to every state guide.</p>
         <span class="dir-card__cta">Open Hub &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="california-asbestos-lawyers">
@@ -1088,10 +1156,10 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         <p>Steel, refinery, and railroad exposure across the Chicago region and downstate.</p>
         <span class="dir-card__cta">View Page &rarr;</span>
       </a>
-      <a class="dir-card dir-card--learn" href="pennsylvania-asbestos-lawyers">
+      <a class="dir-card dir-card--learn" href="louisiana-asbestos-lawyers">
         <span class="dir-card__tag">State Page</span>
-        <h3>Pennsylvania Asbestos Lawyers</h3>
-        <p>Pittsburgh and Bethlehem steel, the Philadelphia Naval Shipyard, coal, and rail.</p>
+        <h3>Louisiana Asbestos Lawyers</h3>
+        <p>Refinery and petrochemical corridor and shipyard exposure, including Avondale.</p>
         <span class="dir-card__cta">View Page &rarr;</span>
       </a>
       <a class="dir-card dir-card--learn" href="michigan-asbestos-lawyers">
@@ -1100,14 +1168,25 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         <p>Auto plants, foundries, and Great Lakes shipbuilding exposure.</p>
         <span class="dir-card__cta">View Page &rarr;</span>
       </a>
-      <a class="dir-card dir-card--learn" href="louisiana-asbestos-lawyers">
+      <a class="dir-card dir-card--learn" href="new-york-asbestos-lawyers">
         <span class="dir-card__tag">State Page</span>
-        <h3>Louisiana Asbestos Lawyers</h3>
-        <p>Refinery and petrochemical corridor and shipyard exposure, including Avondale.</p>
+        <h3>New York Asbestos Lawyers</h3>
+        <p>Brooklyn Navy Yard, power plant, and construction trade exposure.</p>
+        <span class="dir-card__cta">View Page &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="pennsylvania-asbestos-lawyers">
+        <span class="dir-card__tag">State Page</span>
+        <h3>Pennsylvania Asbestos Lawyers</h3>
+        <p>Pittsburgh and Bethlehem steel, the Philadelphia Naval Shipyard, coal, and rail.</p>
+        <span class="dir-card__cta">View Page &rarr;</span>
+      </a>
+      <a class="dir-card dir-card--learn" href="texas-asbestos-lawyers">
+        <span class="dir-card__tag">State Page</span>
+        <h3>Texas Asbestos Lawyers</h3>
+        <p>Gulf Coast refinery, petrochemical, and Houston Ship Channel exposure.</p>
         <span class="dir-card__cta">View Page &rarr;</span>
       </a>
     </div>
-
   </div>
 </section>
 
