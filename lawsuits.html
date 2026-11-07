@@ -287,10 +287,27 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 }
 .cat-section, #free-tools, #active-cases { scroll-margin-top: 104px; }
 @media (max-width: 1200px) { .cat-section, #free-tools, #active-cases { scroll-margin-top: 92px; } }
+.more-filings { margin: 18px 0 0; font-size: 14px; line-height: 1.6; color: var(--ink-muted); }
+.more-filings a { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; }
+.more-filings a:hover { color: var(--amber); text-decoration-color: var(--amber); }
 .dir-card__update { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
 .dir-card__update:hover { color: var(--ink); }
 .dir-card a.dir-card__cta:hover { color: var(--amber-bright); }
-#active-cases .dir-card:hover { transform: none; }
+#active-cases .case-lines { list-style: none; margin: 0; padding: 0 !important; display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; border-top: 1px solid var(--border); }
+#active-cases .case-line { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--border); }
+#active-cases .case-line__name { margin: 0; flex: 1 1 auto; min-width: 0; font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--ink); }
+#active-cases .case-line__links { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 6px 16px; flex-shrink: 0; max-width: 60%; }
+#active-cases .case-line__review { font-size: 13.5px; font-weight: 600; color: var(--amber); white-space: nowrap; }
+#active-cases .case-line__review:hover { color: var(--amber-bright); text-decoration: none; }
+#active-cases .case-line__update { font-size: 13px; font-weight: 500; color: var(--ink-muted); white-space: nowrap; }
+#active-cases .case-line__update:hover { color: var(--ink); text-decoration: none; }
+@media (max-width: 900px) {
+  #active-cases .case-lines { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  #active-cases .case-line { flex-direction: column; align-items: flex-start; gap: 6px; padding: 12px 2px; }
+  #active-cases .case-line__links { justify-content: flex-start; max-width: none; }
+}
 </style>
 <!-- LC-LIGHT-CSS:END -->
 <!-- LC-HEADER-FIT:BEGIN -->
@@ -382,7 +399,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       <a href="#chemicals-pesticides">Chemicals &amp; Pesticides</a>
       <a href="#products-food">Products &amp; Food</a>
       <a href="#drugs-devices">Drugs &amp; Medical Devices</a>
-      <a href="#state-lawyers">State Lawyer Pages</a>
     </div>
   </div>
 </nav>
@@ -423,109 +439,66 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="section__head section__head--left">
       <span class="eyebrow">Active Cases</span>
       <h2>Mass tort cases in court now.</h2>
-      <p>These are the cases Lawsuit Informer follows on its <a href="https://lawsuitinformer.com/current-mass-tort-cases?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_board">status board</a>. Each one has a free case review here. The update link opens the latest court news for that case on Lawsuit Informer.</p>
+      <p>These are the cases Lawsuit Informer follows on its <a href="https://lawsuitinformer.com/current-mass-tort-cases?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_board">status board</a>. Each one has a free case review here. Court updates opens the latest news for that case on Lawsuit Informer.</p>
     </div>
-    <div class="dir-grid">
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>AFFF Firefighting Foam</h3>
-        <p>Firefighters, military members, and airport workers exposed to firefighting foam who were later diagnosed with cancer.</p>
-        <a class="dir-card__cta" href="afff-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/afff-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>ChatGPT and OpenAI</h3>
-        <p>People hurt after conversations with ChatGPT, and families who lost someone after them.</p>
-        <a class="dir-card__cta" href="openai-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/openai-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Depo-Provera</h3>
-        <p>People who received the Depo-Provera shot and were later diagnosed with a meningioma.</p>
-        <a class="dir-card__cta" href="depo-provera-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/depo-provera-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Hair Relaxer</h3>
-        <p>Long-term users of chemical hair straighteners diagnosed with uterine cancer, ovarian cancer, or fibroids.</p>
-        <a class="dir-card__cta" href="hair-relaxer-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/hair-relaxer-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Mesothelioma and Asbestos</h3>
-        <p>People diagnosed with mesothelioma after asbestos exposure at work, in the military, at home, or from talc.</p>
-        <a class="dir-card__cta" href="mesothelioma-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/asbestos-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Ozempic and GLP-1 Drugs</h3>
-        <p>People who took Ozempic, Wegovy, or another GLP-1 drug and had a stomach injury or sudden vision loss.</p>
-        <a class="dir-card__cta" href="ozempic-case-review">Stomach Injury Review &rarr;</a>
-        <a class="dir-card__cta" href="ozempic-vision-loss-case-review">Vision Loss Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/ozempic-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Paraquat</h3>
-        <p>People who mixed or sprayed paraquat and were later diagnosed with Parkinson's disease.</p>
-        <a class="dir-card__cta" href="pesticide-case-review?situation=Paraquat%20%2F%20Parkinson%27s#case-review-form">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/paraquat-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>PFAS Water Contamination</h3>
-        <p>People who drank PFAS-contaminated water and were diagnosed with kidney cancer, testicular cancer, or thyroid disease.</p>
-        <a class="dir-card__cta" href="pfas-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/pfas-water-contamination-lawsuit-update?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Roundup</h3>
-        <p>People who used Roundup or another glyphosate weed killer and were diagnosed with non-Hodgkin lymphoma.</p>
-        <a class="dir-card__cta" href="pesticide-case-review?situation=Roundup%20%2F%20Non-Hodgkin%20Lymphoma#case-review-form">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/roundup-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Social Media Addiction</h3>
-        <p>Families of young people harmed by heavy use of Instagram, TikTok, Snapchat, or YouTube.</p>
-        <a class="dir-card__cta" href="social-media-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/social-media-addiction-lawsuit-update?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Suboxone Tooth Decay</h3>
-        <p>People who used Suboxone film and later had tooth decay, broken teeth, or extractions.</p>
-        <a class="dir-card__cta" href="suboxone-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/suboxone-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Talcum Powder</h3>
-        <p>Women who used talc or baby powder for years and were diagnosed with ovarian cancer.</p>
-        <a class="dir-card__cta" href="talcum-powder-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/talcum-powder-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Tylenol and Autism</h3>
-        <p>Parents who took acetaminophen during pregnancy and whose child was later diagnosed with autism or ADHD.</p>
-        <a class="dir-card__cta" href="tylenol-case-review">Request Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/tylenol-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
-      <div class="dir-card">
-        <span class="dir-card__tag">Case Review</span>
-        <h3>Video Games and Roblox</h3>
-        <p>Families of young people harmed by compulsive gaming, or contacted by a predator through Roblox.</p>
-        <a class="dir-card__cta" href="video-game-case-review">Video Game Review &rarr;</a>
-        <a class="dir-card__cta" href="roblox-case-review">Roblox Review &rarr;</a>
-        <a class="dir-card__update" href="https://lawsuitinformer.com/video-game-addiction-lawsuit-update?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Latest court updates &rarr;</a>
-      </div>
+    <ul class="case-lines">
+      <li class="case-line">
+        <h3 class="case-line__name">AFFF Firefighting Foam</h3>
+        <div class="case-line__links"><a class="case-line__review" href="afff-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/afff-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">ChatGPT and OpenAI</h3>
+        <div class="case-line__links"><a class="case-line__review" href="openai-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/openai-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Depo-Provera</h3>
+        <div class="case-line__links"><a class="case-line__review" href="depo-provera-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/depo-provera-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Hair Relaxer</h3>
+        <div class="case-line__links"><a class="case-line__review" href="hair-relaxer-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/hair-relaxer-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Mesothelioma and Asbestos</h3>
+        <div class="case-line__links"><a class="case-line__review" href="mesothelioma-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/asbestos-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Ozempic and GLP&#8209;1 Drugs</h3>
+        <div class="case-line__links"><a class="case-line__review" href="ozempic-case-review">Stomach Injury Review &rarr;</a><a class="case-line__review" href="ozempic-vision-loss-case-review">Vision Loss Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/ozempic-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Paraquat</h3>
+        <div class="case-line__links"><a class="case-line__review" href="pesticide-case-review?situation=Paraquat%20%2F%20Parkinson%27s#case-review-form">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/paraquat-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">PFAS Water Contamination</h3>
+        <div class="case-line__links"><a class="case-line__review" href="pfas-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/pfas-water-contamination-lawsuit-update?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Roundup</h3>
+        <div class="case-line__links"><a class="case-line__review" href="pesticide-case-review?situation=Roundup%20%2F%20Non-Hodgkin%20Lymphoma#case-review-form">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/roundup-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Social Media Addiction</h3>
+        <div class="case-line__links"><a class="case-line__review" href="social-media-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/social-media-addiction-lawsuit-update?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Suboxone Tooth Decay</h3>
+        <div class="case-line__links"><a class="case-line__review" href="suboxone-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/suboxone-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Talcum Powder</h3>
+        <div class="case-line__links"><a class="case-line__review" href="talcum-powder-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/talcum-powder-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Tylenol and Autism</h3>
+        <div class="case-line__links"><a class="case-line__review" href="tylenol-case-review">Request Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/tylenol-lawsuit-updates?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+      <li class="case-line">
+        <h3 class="case-line__name">Video Games and Roblox</h3>
+        <div class="case-line__links"><a class="case-line__review" href="video-game-case-review">Video Game Review &rarr;</a><a class="case-line__review" href="roblox-case-review">Roblox Review &rarr;</a><a class="case-line__update" href="https://lawsuitinformer.com/video-game-addiction-lawsuit-update?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=lawsuits_active">Court updates &rarr;</a></div>
+      </li>
+    </ul>
     </div>
   </div>
 </section>
@@ -748,37 +721,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         <p>A pastor says ChatGPT&#x27;s medical advice kept him home while blood clots formed in his lungs.</p>
         <span class="dir-card__cta">Read the Case &rarr;</span>
       </a>
-      <a class="dir-card dir-card--learn" href="jean-doe-v-openai-lawsuit">
-        <span class="dir-card__tag">Case Filing</span>
-        <h3>Jean Doe v. OpenAI</h3>
-        <p>A woman says ChatGPT walked her through a suicide attempt she survived.</p>
-        <span class="dir-card__cta">Read the Case &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="nadia-n-v-openai-lawsuit">
-        <span class="dir-card__tag">Case Filing</span>
-        <h3>Nadia N. v. OpenAI</h3>
-        <p>A widow says ChatGPT pushed her husband toward abuse and then his death.</p>
-        <span class="dir-card__cta">Read the Case &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="morales-v-openai-lawsuit">
-        <span class="dir-card__tag">Case Filing</span>
-        <h3>Morales v. OpenAI</h3>
-        <p>A widow sues OpenAI and Sam Altman over the FSU shooting that killed her husband.</p>
-        <span class="dir-card__cta">Read the Case &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="gourley-v-openai-lawsuit">
-        <span class="dir-card__tag">Case Filing</span>
-        <h3>Gourley v. OpenAI</h3>
-        <p>A student shot at Florida State sues OpenAI over the shooter&#x27;s ChatGPT use.</p>
-        <span class="dir-card__cta">Read the Case &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="rushlow-v-altman-lawsuit">
-        <span class="dir-card__tag">Case Filing</span>
-        <h3>Rushlow v. Altman</h3>
-        <p>A teacher who survived the Tumbler Ridge school shooting sues OpenAI and Sam Altman.</p>
-        <span class="dir-card__cta">Read the Case &rarr;</span>
-      </a>
     </div>
+    <p class="more-filings">More case filings: <a href="jean-doe-v-openai-lawsuit">Jean Doe v. OpenAI</a> &middot; <a href="nadia-n-v-openai-lawsuit">Nadia N. v. OpenAI</a> &middot; <a href="morales-v-openai-lawsuit">Morales v. OpenAI</a> &middot; <a href="gourley-v-openai-lawsuit">Gourley v. OpenAI</a> &middot; <a href="rushlow-v-altman-lawsuit">Rushlow v. Altman</a></p>
   </div>
 </section>
 
@@ -1117,79 +1061,12 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 </section>
 
 
-<section id="state-lawyers" class="section cat-section">
-  <div class="container">
-    <div class="section__head">
-      <span class="eyebrow">State Lawyer Pages</span>
-      <h2>State-specific asbestos lawyer information.</h2>
-      <p>Each state guide covers local exposure sites, filing deadlines, and questions to ask before hiring.</p>
-    </div>
-    <h3 class="subhead">Asbestos Lawyers by State</h3>
-    <div class="dir-grid">
-      <a class="dir-card dir-card--learn" href="asbestos-lawyers">
-        <span class="dir-card__tag">Hub</span>
-        <h3>Asbestos Lawyers (All States)</h3>
-        <p>What asbestos lawyers do nationwide, with links to every state guide.</p>
-        <span class="dir-card__cta">Open Hub &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="california-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>California Asbestos Lawyers</h3>
-        <p>Shipyard, refinery, and aerospace exposure, plus questions to ask before hiring.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="florida-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>Florida Asbestos Lawyers</h3>
-        <p>Naval, shipbuilding, and industrial exposure, plus what to gather before contacting a firm.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="illinois-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>Illinois Asbestos Lawyers</h3>
-        <p>Steel, refinery, and railroad exposure across the Chicago region and downstate.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="louisiana-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>Louisiana Asbestos Lawyers</h3>
-        <p>Refinery and petrochemical corridor and shipyard exposure, including Avondale.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="michigan-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>Michigan Asbestos Lawyers</h3>
-        <p>Auto plants, foundries, and Great Lakes shipbuilding exposure.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="new-york-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>New York Asbestos Lawyers</h3>
-        <p>Brooklyn Navy Yard, power plant, and construction trade exposure.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="pennsylvania-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>Pennsylvania Asbestos Lawyers</h3>
-        <p>Pittsburgh and Bethlehem steel, the Philadelphia Naval Shipyard, coal, and rail.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-      <a class="dir-card dir-card--learn" href="texas-asbestos-lawyers">
-        <span class="dir-card__tag">State Page</span>
-        <h3>Texas Asbestos Lawyers</h3>
-        <p>Gulf Coast refinery, petrochemical, and Houston Ship Channel exposure.</p>
-        <span class="dir-card__cta">View Page &rarr;</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 </main>
 
 <section class="final">
   <div class="container container--narrow">
     <h2>Still not sure where you fit?</h2>
-    <p>You don't need to know the exact lawsuit category before submitting. Identify the exposure, product, injury, diagnosis, or event involved &mdash; that's enough to start. Each submission is reviewed to understand whether it relates to an available case-review path.</p>
+    <p>You don't need to know the exact lawsuit before you start. Tell us the product, exposure, injury, or diagnosis involved. David Meldofsky reviews each request and refers it to a firm handling that kind of case.</p>
     <div class="final__ctas">
      <a href="case-review" class="btn btn--dark btn--lg">Start General Case Review</a>
      <a href="how-case-review-works" class="btn btn--outline btn--lg">How Case Review Works</a>
