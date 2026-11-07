@@ -186,9 +186,6 @@
       desc: "A student shot at Florida State University is suing OpenAI over the shooter's year of ChatGPT conversations. The first AI case brought by someone injured who never used the product, with the complaint posted in full.",
       keywords: "gourley v openai gourley lawsuit reese gourley fsu florida state shooting chatgpt ai artificial intelligence aiding and abetting negligent entrustment negligent undertaking sycophancy complaint pdf court filing tallahassee northern district florida 4:26-cv-00416 bystander non-user" },
 
-    // ----- Personal injury overviews -----
-
-    // ----- Financial -----
 
     // ----- Resources -----
     { url: "lawsuits", title: "Browse Lawsuits", tag: "Directory", category: "General",
@@ -196,7 +193,7 @@
       keywords: "browse lawsuits all lawsuits categories directory list index find case type" },
 
     { url: "resources", title: "Legal Resources", tag: "Directory", category: "General",
-      desc: "Legal resources on lawsuit research, case review, funding, claim categories, and practical next steps.",
+      desc: "Legal resources on lawsuit research, case review, claim categories, free exposure checkers, and practical next steps.",
       keywords: "legal resources research guides help next steps directory" },
 
     { url: "educational-review", title: "Legal Fee Agreement Review", tag: "Free Tool", category: "Free Tools",
@@ -319,11 +316,11 @@
       desc: "GLP-1 medications and reported gastrointestinal complications.",
       keywords: "ozempic glp-1 wegovy mounjaro semaglutide gastroparesis stomach paralysis" },
 
-    { url: "consumer-lawsuits", title: "Consumer Lawsuits", tag: "Overview", category: "Consumer & Financial",
+    { url: "consumer-lawsuits", title: "Consumer Lawsuits", tag: "Overview", category: "Consumer & Class Action",
       desc: "False advertising, billing disputes, defective products, scams, and consumer protection.",
       keywords: "consumer protection false advertising billing scam" },
 
-    { url: "class-action-lawsuits", title: "Class Action Lawsuits", tag: "Overview", category: "Business & Employment",
+    { url: "class-action-lawsuits", title: "Class Action Lawsuits", tag: "Overview", category: "Consumer & Class Action",
       desc: "Large group claims involving consumers, employees, investors, or defective products.",
       keywords: "class action group claim mass" },
 
