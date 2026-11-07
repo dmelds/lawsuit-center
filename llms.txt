@@ -52,15 +52,7 @@
 - [OpenAI case review](https://lawsuit.center/openai-case-review): Review for AI chatbot harm claims.
 - [Deepfake case review](https://lawsuit.center/deepfake-case-review): Non-consensual AI image claims.
 
-## Personal injury
-- [Personal injury lawsuits](https://lawsuit.center/personal-injury-lawsuits): Overview of personal-injury claims.
-- [Truck accident lawsuits](https://lawsuit.center/truck-accident-lawsuits): Commercial truck collision claims.
-- [Car accident lawsuits](https://lawsuit.center/car-accident-lawsuits): Auto collision claims.
-- [Wrongful death lawsuits](https://lawsuit.center/wrongful-death-lawsuits): Fatal-injury claims.
 
-## For attorneys
-- [For law firms](https://lawsuit.center/for-law-firms): How firms can work with Lawsuit Center.
-- [Marketing packages](https://lawsuit.center/marketing-packages): Sponsored visibility options.
 
 ## Policies
 - [Editorial policy](https://lawsuit.center/editorial-policy)

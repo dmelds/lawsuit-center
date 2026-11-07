@@ -157,11 +157,6 @@
       desc: "Not sure where you fit? Describe the situation and we'll review which category may apply.",
       keywords: "general case review intake start lawsuit lawsuits claim claims free case review sue" },
 
-    { url: "truck-accident-case-review", title: "Truck Accident Case Review", tag: "Case Review", category: "Personal Injury",
-      desc: "Commercial truck, semi, or 18-wheeler crash with injuries. Share the crash, injuries, and recovery for review.",
-      keywords: "truck accident crash commercial semi 18 wheeler tractor trailer big rig delivery van trucking company driver fatigue injury wrongful death lawsuit lawsuits claim claims case review free case review sue" },
-
-
     // ----- Case filings -----
     { url: "rushlow-v-altman-lawsuit", title: "Rushlow v. Altman", tag: "Case Filing", category: "AI Chatbot Harm",
       desc: "A grade 7 teacher who survived the Tumbler Ridge school shooting is suing OpenAI and Sam Altman, saying the company was told the attacker was dangerous eight months earlier and chose not to call police. Complaint posted in full.",
@@ -192,42 +187,8 @@
       keywords: "gourley v openai gourley lawsuit reese gourley fsu florida state shooting chatgpt ai artificial intelligence aiding and abetting negligent entrustment negligent undertaking sycophancy complaint pdf court filing tallahassee northern district florida 4:26-cv-00416 bystander non-user" },
 
     // ----- Personal injury overviews -----
-    { url: "truck-accident-lawsuits", title: "Truck Accident Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How truck accident lawsuits work, what evidence may matter, who may be responsible, and what can affect a claim after a serious crash.",
-      keywords: "truck accident lawsuit semi 18 wheeler tractor trailer big rig commercial vehicle trucking company driver fatigue crash injury" },
-
-    { url: "car-accident-lawsuits", title: "Car Accident Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How car accident lawsuits work, what evidence may matter, who may be responsible, and what factors can affect an injury claim.",
-      keywords: "car accident lawsuit auto crash collision rear end fault insurance injury claim vehicle" },
-
-    { url: "motorcycle-accident-lawsuits", title: "Motorcycle Accident Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How motorcycle accident lawsuits work, what factors may affect a claim, and what evidence may matter after a serious crash.",
-      keywords: "motorcycle accident lawsuit bike crash rider helmet injury collision" },
-
-    { url: "pedestrian-accident-lawsuits", title: "Pedestrian Accident Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How pedestrian accident lawsuits work, what factors may affect a claim, and what evidence may matter after a serious collision.",
-      keywords: "pedestrian accident lawsuit struck by car crosswalk hit and run walking injury" },
-
-    { url: "slip-and-fall-lawsuits", title: "Slip and Fall Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How slip and fall lawsuits work, what factors may affect a claim, who may be responsible, and what evidence may matter after a fall.",
-      keywords: "slip and fall lawsuit trip premises liability property owner wet floor negligence fall injury" },
-
-    { url: "dog-bite-lawsuits", title: "Dog Bite Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How dog bite lawsuits work, what factors may affect a claim, who may be responsible, and what evidence may matter after an animal attack.",
-      keywords: "dog bite lawsuit animal attack owner liability leash law scarring injury" },
-
-    { url: "catastrophic-injury-lawsuits", title: "Catastrophic Injury Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How catastrophic injury lawsuits work, what factors may affect a claim, and what evidence may matter after a life-changing injury.",
-      keywords: "catastrophic injury lawsuit traumatic brain injury spinal cord paralysis amputation burn permanent disability" },
-
-    { url: "wrongful-death-lawsuits", title: "Wrongful Death Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "How wrongful death lawsuits work, who may bring a claim, what factors may affect it, and what evidence may matter after a fatal injury.",
-      keywords: "wrongful death lawsuit fatal survival action estate personal representative surviving family funeral loss of support" },
 
     // ----- Financial -----
-    { url: "stock-market-fraud-lawsuits", title: "Stock Market Fraud Lawsuits", tag: "Overview", category: "Consumer & Financial",
-      desc: "Securities fraud, broker misconduct, pump-and-dump schemes, insider trading, Ponzi schemes, and shareholder claims.",
-      keywords: "stock market fraud lawsuit securities broker misconduct pump and dump insider trading ponzi shareholder investment loss finra arbitration" },
 
     // ----- Resources -----
     { url: "lawsuits", title: "Browse Lawsuits", tag: "Directory", category: "General",
@@ -237,10 +198,6 @@
     { url: "resources", title: "Legal Resources", tag: "Directory", category: "General",
       desc: "Legal resources on lawsuit research, case review, funding, claim categories, and practical next steps.",
       keywords: "legal resources research guides help next steps directory" },
-
-    { url: "lawsuit-funding-options", title: "Lawsuit Funding Options", tag: "Guide", category: "General",
-      desc: "How lawsuit funding works, what to ask before applying, possible risks and alternatives, and how to compare legal funding companies.",
-      keywords: "lawsuit funding pre-settlement advance legal funding company loan cash advance while case pending risks alternatives compare" },
 
     { url: "educational-review", title: "Legal Fee Agreement Review", tag: "Free Tool", category: "Free Tools",
       desc: "Request an educational review of an attorney retainer or fee agreement to identify terms you may want to ask about before signing.",
@@ -362,85 +319,13 @@
       desc: "GLP-1 medications and reported gastrointestinal complications.",
       keywords: "ozempic glp-1 wegovy mounjaro semaglutide gastroparesis stomach paralysis" },
 
-    { url: "personal-injury-lawsuits", title: "Personal Injury Lawsuits", tag: "Overview", category: "Personal Injury",
-      desc: "Background on accident, negligence, and injury-related claim categories.",
-      keywords: "personal injury accident negligence" },
-
     { url: "consumer-lawsuits", title: "Consumer Lawsuits", tag: "Overview", category: "Consumer & Financial",
       desc: "False advertising, billing disputes, defective products, scams, and consumer protection.",
       keywords: "consumer protection false advertising billing scam" },
 
-    { url: "financial-lawsuits", title: "Financial Lawsuits", tag: "Overview", category: "Consumer & Financial",
-      desc: "Investment losses, financial misconduct, securities, and consumer finance claims.",
-      keywords: "financial investment securities ponzi misconduct" },
-
-    { url: "banking-lending-lawsuits", title: "Banking & Lending Lawsuits", tag: "Overview", category: "Consumer & Financial",
-      desc: "Bank fees, mortgage servicing, credit reporting, debt collection, and predatory lending.",
-      keywords: "banking lending mortgage credit report debt collection predatory" },
-
-    { url: "privacy-data-breach-lawsuits", title: "Privacy & Data Breach Lawsuits", tag: "Overview", category: "Privacy & Civil Rights",
-      desc: "Data breaches, biometric privacy, tracking, and exposed personal information.",
-      keywords: "privacy data breach biometric tracking pixel BIPA" },
-
-    { url: "defamation-reputation-lawsuits", title: "Defamation & Reputation Lawsuits", tag: "Overview", category: "Privacy & Civil Rights",
-      desc: "Libel, slander, online reviews, social media posts, and reputation harm.",
-      keywords: "defamation libel slander reputation review" },
-
-    { url: "social-media-defamation-lawsuit", title: "Social Media Defamation Lawsuit", tag: "Lawsuit", category: "Privacy & Civil Rights",
-      desc: "Suing over false Facebook or Instagram posts: whom you sue, what you must prove, section 230, and when a case review makes sense.",
-      keywords: "social media defamation lawsuit facebook defamation lawsuit sue for slander on facebook libel instagram false post online reputation section 230" },
-
-    { url: "civil-rights-lawsuits", title: "Civil Rights Lawsuits", tag: "Overview", category: "Privacy & Civil Rights",
-      desc: "Discrimination, government misconduct, police misconduct, and disability access claims.",
-      keywords: "civil rights discrimination police government disability ADA" },
-
-    { url: "business-lawsuits", title: "Business Lawsuits", tag: "Overview", category: "Business & Employment",
-      desc: "Contracts, partnership disputes, fraud, unfair competition, and commercial litigation.",
-      keywords: "business contract partnership fraud commercial" },
-
-    { url: "employment-lawsuits", title: "Employment Lawsuits", tag: "Overview", category: "Business & Employment",
-      desc: "Wage claims, discrimination, retaliation, harassment, and wrongful termination.",
-      keywords: "employment wage discrimination retaliation harassment wrongful termination" },
-
     { url: "class-action-lawsuits", title: "Class Action Lawsuits", tag: "Overview", category: "Business & Employment",
       desc: "Large group claims involving consumers, employees, investors, or defective products.",
       keywords: "class action group claim mass" },
-
-    { url: "consumer-bankruptcy", title: "Consumer Bankruptcy", tag: "Overview", category: "Debt & Bankruptcy",
-      desc: "Chapter 7 and Chapter 13 basics, the automatic stay, and dischargeable debts.",
-      keywords: "consumer bankruptcy chapter 7 chapter 13 automatic stay discharge" },
-
-    { url: "business-bankruptcy", title: "Business Bankruptcy", tag: "Overview", category: "Debt & Bankruptcy",
-      desc: "Chapter 11 reorganization, Subchapter V, Chapter 7 liquidation, and creditor claims.",
-      keywords: "business bankruptcy chapter 11 subchapter v chapter 7 reorganization" },
-
-    { url: "insurance-lawsuits", title: "Insurance Lawsuits", tag: "Overview", category: "Property & Insurance",
-      desc: "Denied claims, delayed payments, bad faith, and coverage disputes.",
-      keywords: "insurance denied claim bad faith coverage" },
-
-    { url: "real-estate-property-lawsuits", title: "Real Estate & Property Lawsuits", tag: "Overview", category: "Property & Insurance",
-      desc: "Landlord-tenant, boundary, title, HOA disputes, and property damage.",
-      keywords: "real estate landlord tenant boundary title HOA property" },
-
-    { url: "construction-lawsuits", title: "Construction Lawsuits", tag: "Overview", category: "Property & Insurance",
-      desc: "Construction defects, contractor disputes, mechanic's liens, and unsafe work.",
-      keywords: "construction contractor defect lien" },
-
-    { url: "lawsuit-defense", title: "Lawsuit Defense", tag: "Overview", category: "Lawsuit Defense",
-      desc: "Responding to a lawsuit, deadlines, pleadings, default judgments, and hiring defense counsel.",
-      keywords: "lawsuit defense defendant sued response deadline" },
-
-    { url: "what-to-do-after-being-sued", title: "What To Do After Being Sued", tag: "Guide", category: "Lawsuit Defense",
-      desc: "Basic steps after receiving a complaint, summons, demand letter, or other legal notice.",
-      keywords: "sued complaint summons demand letter served" },
-
-    { url: "default-judgment", title: "Default Judgment", tag: "Guide", category: "Lawsuit Defense",
-      desc: "What a default judgment is and why response deadlines matter.",
-      keywords: "default judgment deadline response" },
-
-    { url: "california-personal-injury-lawyers", title: "California Personal Injury Lawyers", tag: "State Page", category: "State Lawyer Pages",
-      desc: "California injury lawyer information and questions to ask before hiring.",
-      keywords: "california personal injury lawyer attorney" },
 
     { url: "asbestos-lawyers", title: "Asbestos Lawyers", tag: "Lawyers", category: "State Lawyer Pages",
       desc: "Find an asbestos lawyer by state — what asbestos attorneys do, time limits, and how to compare firms.",
