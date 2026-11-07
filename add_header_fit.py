@@ -46,7 +46,9 @@ CSS = (
     "@media (max-width:1200px){"
     ".nav__links{display:none !important}"
     ".nav__links.is-open{display:flex !important;position:absolute;top:76px;left:0;right:0;"
-    "flex-direction:column;align-items:stretch;background:rgba(17,17,17,.97);"
+    # Solid page color, light or dark. The old 97% background let page text
+    # show through the open phone menu.
+    "flex-direction:column;align-items:stretch;background:var(--bg) !important;"
     "padding:24px var(--gutter);border-bottom:1px solid var(--border);gap:16px}"
     ".nav__links.is-open a{width:100%;color:var(--ink);white-space:normal}"
     ".nav .btn--amber{display:none !important}"
