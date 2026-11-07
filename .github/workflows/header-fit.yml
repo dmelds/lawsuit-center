@@ -1,0 +1,91 @@
+name: Header Fit
+
+# Puts the LC-HEADER-FIT style block before </head> on every page with a site
+# header, so no page scrolls sideways at any screen width: the hamburger menu
+# takes over at 1200px and below on every page, and above 1200px the header
+# drops the tagline, the header search box and duplicate text links until it
+# fits. See add_header_fit.py for the exact rules.
+#
+# Dispatch only: run it from the Actions tab, read the dry-run summary in the
+# log, then run again with apply = true. The branch input defaults to main.
+#
+# The script is idempotent. A rerun on a swept tree reports zero pages changed.
+# To change the rules, edit CSS in add_header_fit.py and run with apply = true;
+# every page's block is replaced in place.
+#
+# The commit carries [skip lastmod] [skip actions]: this is layout, not
+# content, so no page's sitemap lastmod moves.
+#
+# It also runs a dry run on the 1st of each month. That run never writes
+# anything; it fails on purpose when a page is missing the current block,
+# which is how a page built from an old donor gets caught.
+
+on:
+  schedule:
+    - cron: '41 12 1 * *'
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write changes and commit (leave false for a dry run)'
+        type: boolean
+        default: false
+      branch:
+        description: 'Branch to commit to'
+        type: string
+        default: main
+
+concurrency:
+  group: repo-writes
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || 'main' }}
+
+      - name: Dry run
+        run: |
+          set -o pipefail
+          python3 add_header_fit.py | tee /tmp/fit.log
+
+      - name: Fail the monthly check if a page is missing the block
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          if grep -q '^  0 pages would change' /tmp/fit.log && grep -q '^  0 pages with problems' /tmp/fit.log; then
+            echo "Every page carries the current header fit block."
+            exit 0
+          fi
+          echo "::error::Pages are missing the header fit block. Run this workflow with apply = true on main."
+          sed -n '1,8p' /tmp/fit.log
+          exit 1
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        run: python3 add_header_fit.py --apply
+
+      - name: Commit
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add '*.html'
+          git commit -m "Fit the site header to every screen width [skip lastmod] [skip actions]"
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            git pull --rebase origin "${{ inputs.branch || 'main' }}"
+            sleep $((attempt * 3))
+          done
+          exit 1
