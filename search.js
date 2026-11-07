@@ -186,7 +186,6 @@
       desc: "A student shot at Florida State University is suing OpenAI over the shooter's year of ChatGPT conversations. The first AI case brought by someone injured who never used the product, with the complaint posted in full.",
       keywords: "gourley v openai gourley lawsuit reese gourley fsu florida state shooting chatgpt ai artificial intelligence aiding and abetting negligent entrustment negligent undertaking sycophancy complaint pdf court filing tallahassee northern district florida 4:26-cv-00416 bystander non-user" },
 
-
     // ----- Resources -----
     { url: "lawsuits", title: "Browse Lawsuits", tag: "Directory", category: "General",
       desc: "Every litigation category tracked on Lawsuit Center, with case review options for each.",
@@ -315,14 +314,6 @@
     { url: "ozempic-lawsuit", title: "Ozempic / GLP-1 Lawsuits", tag: "Overview", category: "Drugs & Medical Devices",
       desc: "GLP-1 medications and reported gastrointestinal complications.",
       keywords: "ozempic glp-1 wegovy mounjaro semaglutide gastroparesis stomach paralysis" },
-
-    { url: "consumer-lawsuits", title: "Consumer Lawsuits", tag: "Overview", category: "Consumer & Class Action",
-      desc: "False advertising, billing disputes, defective products, scams, and consumer protection.",
-      keywords: "consumer protection false advertising billing scam" },
-
-    { url: "class-action-lawsuits", title: "Class Action Lawsuits", tag: "Overview", category: "Consumer & Class Action",
-      desc: "Large group claims involving consumers, employees, investors, or defective products.",
-      keywords: "class action group claim mass" },
 
     { url: "asbestos-lawyers", title: "Asbestos Lawyers", tag: "Lawyers", category: "State Lawyer Pages",
       desc: "Find an asbestos lawyer by state — what asbestos attorneys do, time limits, and how to compare firms.",
