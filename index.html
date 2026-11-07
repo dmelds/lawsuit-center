@@ -319,6 +319,23 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 :root[data-theme="light"] .site-nav.open { background: rgba(250,249,247,.98); }
 :root[data-theme="light"] .nav__links.is-open a,
 :root[data-theme="light"] .site-nav.open a { color: var(--ink); }
+
+/* Homepage case grid: compact tiles so 16 cases fit in about four short rows. */
+.hero--categories .cats { gap: 10px; }
+.hero--categories .cat { min-height: 0; padding: 14px 16px 13px; gap: 4px; border-radius: 12px; }
+.hero--categories .cat:hover { transform: translateY(-2px); }
+.hero--categories .cat__name { font-size: 15.5px; gap: 6px; margin: 0; }
+.hero--categories .cat__desc { font-size: 13px; line-height: 1.45; margin: 0; flex-grow: 0; }
+.hero--categories .cat__more { font-size: 12px; margin-top: auto; padding-top: 4px; }
+.hero--categories .cat__badge { padding: 2px 8px; font-size: 10px; }
+@media (max-width: 1100px) { .hero--categories .cats { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px) { .hero--categories .cats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) {
+  .hero--categories .cats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hero--categories .cat { padding: 12px 12px 11px; }
+  .hero--categories .cat__name { font-size: 14.5px; }
+  .hero--categories .cat__desc { display: none; }
+}
 </style>
 <!-- LC-LIGHT-CSS:END -->
 <!-- LC-HEADER-FIT:BEGIN -->
