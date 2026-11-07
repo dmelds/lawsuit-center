@@ -1,58 +1,102 @@
 # Lawsuit Center
 
-> Attorney-built lawsuit research and case-review platform. Free, no-obligation case reviews and plain-English explanations of who may qualify for mass-tort, product-liability, toxic-exposure, and personal-injury claims. Lawsuit Center is not a law firm and does not provide legal advice; submissions may be reviewed by participating law firms or intake providers.
+> Attorney-built lawsuit research and case-review platform for mass tort, product liability, toxic exposure, and AI harm claims. Free, no-obligation case reviews and plain-English explanations of who may qualify. Lawsuit Center is the intake and referral practice of David Meldofsky, a California attorney, who refers each case review request to a participating law firm. The site provides no legal advice.
 
 ## Start here
 - [Start a free case review](https://lawsuit.center/case-review): Submit basic information about a potential claim for review.
-- [How case review works](https://lawsuit.center/how-case-review-works): What happens after you submit information.
+- [How case review works](https://lawsuit.center/how-case-review-works): What happens after you submit information, and how referral fees work.
 - [Browse all lawsuits](https://lawsuit.center/lawsuits): Index of lawsuit categories covered on the site.
 - [About Lawsuit Center](https://lawsuit.center/about): Who runs the platform and how it works.
 - [David Meldofsky](https://lawsuit.center/david-meldofsky): Founder; California-licensed attorney.
 
+## Free tools
+- [Cancer exposure checker](https://lawsuit.center/cancer-exposure-checker): Maps a cancer diagnosis and exposure history to active case categories.
+- [PFAS exposure checker](https://lawsuit.center/pfas-exposure-checker): Check your PFAS exposure history.
+- [Processed food claim checker](https://lawsuit.center/processed-food-claim-checker): Type 2 diabetes or fatty liver diagnoses and ultra-processed food claims.
+
 ## Asbestos and mesothelioma
 - [Asbestos lawsuits](https://lawsuit.center/asbestos-lawsuits): Exposure history, illnesses, and how claims are reviewed.
 - [Asbestos case review](https://lawsuit.center/asbestos-case-review): Free review for asbestos exposure claims.
-- [Mesothelioma lawyers](https://lawsuit.center/mesothelioma-lawyers): Attorneys handling mesothelioma claims.
-- [Asbestos lawyers](https://lawsuit.center/asbestos-lawyers): Attorneys handling asbestos claims.
+- [Mesothelioma case review](https://lawsuit.center/mesothelioma-case-review): Free review for a mesothelioma diagnosis.
+- [Peritoneal mesothelioma case review](https://lawsuit.center/peritoneal-mesothelioma-case-review): Free review for peritoneal mesothelioma.
+- [Pleural mesothelioma case review](https://lawsuit.center/pleural-mesothelioma-case-review): Free review for pleural mesothelioma.
 - [Lung cancer from asbestos exposure](https://lawsuit.center/lung-cancer-from-asbestos-exposure): How asbestos history is evaluated in lung cancer claims.
+- [Lung cancer asbestos review](https://lawsuit.center/lung-cancer-asbestos-review): Free review for lung cancer after asbestos exposure.
+- [Mesothelioma lawyers](https://lawsuit.center/mesothelioma-lawyers): What mesothelioma lawyers do and what to ask them.
+- [Asbestos lawyers](https://lawsuit.center/asbestos-lawyers): What asbestos lawyers do and what to ask them.
 - [Asbestos lawyers by state](https://lawsuit.center/california-asbestos-lawyers): State pages for CA, FL, IL, LA, MI, NY, PA, TX.
 
-## PFAS and water contamination
-- [PFAS water contamination lawsuits](https://lawsuit.center/pfas-water-contamination-lawsuits): Forever-chemical drinking water and AFFF claims.
+## PFAS, AFFF, and water contamination
 - [PFAS lawsuit overview](https://lawsuit.center/pfas-lawsuit): What PFAS lawsuits involve and who may qualify.
-- [PFAS case review](https://lawsuit.center/pfas-case-review): Free review for PFAS exposure claims.
-- [PFAS exposure checker](https://lawsuit.center/pfas-exposure-checker): Check your PFAS exposure history.
-- [PFAS lawyers](https://lawsuit.center/pfas-lawyers): Attorneys handling PFAS claims.
+- [PFAS case review](https://lawsuit.center/pfas-case-review): Free review for PFAS drinking water exposure claims.
+- [AFFF case review](https://lawsuit.center/afff-case-review): Free review for firefighting foam exposure claims.
+- [PFAS lawyers](https://lawsuit.center/pfas-lawyers): What PFAS lawyers do and what to ask them.
+- [Camp Lejeune case review](https://lawsuit.center/camp-lejeune-case-review): For Camp Lejeune claimants still waiting on or denied by the Navy.
 - [Water contamination lawsuits](https://lawsuit.center/water-contamination-lawsuits): Broader contaminated-water claims.
+- [Toxic water case review](https://lawsuit.center/toxic-water-case-review): Free review for contaminated water claims.
+- [Environmental contamination case review](https://lawsuit.center/environmental-contamination-case-review): Free review for polluted water, chemical releases, or toxic emissions.
+- [Air pollution case review](https://lawsuit.center/air-pollution-case-review): Free review for industrial emissions and refinery exposure.
 
-## Pesticides and herbicides
+## Pesticides and chemicals
 - [Roundup lawsuit](https://lawsuit.center/roundup-lawsuit): Glyphosate exposure and non-Hodgkin lymphoma.
 - [Paraquat lawsuit](https://lawsuit.center/paraquat-lawsuit): Herbicide exposure and Parkinson's disease.
-- [Pesticide case review](https://lawsuit.center/pesticide-case-review): Free review for herbicide/pesticide claims.
+- [Pesticide case review](https://lawsuit.center/pesticide-case-review): Free review for herbicide and pesticide claims.
+- [Chemical exposure case review](https://lawsuit.center/chemical-exposure-case-review): Free review for contaminated water, pesticides, PFAS, or workplace chemicals.
+- [Neurological case review](https://lawsuit.center/neurological-case-review): Free review for Parkinson's disease, neuropathy, or cognitive decline after exposure.
 
 ## Pharmaceuticals and medical devices
 - [Depo-Provera lawsuit](https://lawsuit.center/depo-provera): Injectable contraceptive and meningioma claims.
 - [Depo-Provera case review](https://lawsuit.center/depo-provera-case-review): Free Depo-Provera claim review.
-- [Tylenol autism lawsuit](https://lawsuit.center/tylenol-autism-lawsuit): Prenatal acetaminophen claims.
 - [Ozempic lawsuit](https://lawsuit.center/ozempic-lawsuit): GLP-1 drug injury claims.
-- [Hernia mesh lawyers](https://lawsuit.center/hernia-mesh-lawyers): Surgical mesh device claims.
+- [Ozempic case review](https://lawsuit.center/ozempic-case-review): Free review for GLP-1 stomach or vision injuries.
+- [Ozempic vision loss case review](https://lawsuit.center/ozempic-vision-loss-case-review): Free review for NAION and other vision loss.
+- [Suboxone lawsuit](https://lawsuit.center/suboxone-lawsuit): Suboxone film and dental injury claims.
+- [Suboxone case review](https://lawsuit.center/suboxone-case-review): Free review for Suboxone tooth decay claims.
+- [Hernia mesh case review](https://lawsuit.center/hernia-mesh-case-review): Free review for hernia mesh complications.
+- [Hernia mesh lawyers](https://lawsuit.center/hernia-mesh-lawyers): What hernia mesh lawyers do and what to ask them.
 - [Medical device lawsuits](https://lawsuit.center/medical-device-lawsuits): Defective device claims.
+- [Drug injury lawsuits](https://lawsuit.center/drug-injury-lawsuits): Medication injury claims.
 
 ## Consumer products
 - [Talcum powder lawsuits](https://lawsuit.center/talcum-powder-lawsuits): Talc and ovarian cancer claims.
+- [Talcum powder case review](https://lawsuit.center/talcum-powder-case-review): Free review for talc and ovarian cancer.
 - [Hair relaxer lawsuit](https://lawsuit.center/hair-relaxer-lawsuit): Chemical hair-straightener cancer claims.
+- [Hair relaxer case review](https://lawsuit.center/hair-relaxer-case-review): Free review for uterine cancer, ovarian cancer, or fibroids.
+- [Tylenol autism lawsuit](https://lawsuit.center/tylenol-autism-lawsuit): Prenatal acetaminophen claims.
+- [Tylenol case review](https://lawsuit.center/tylenol-case-review): Free review for prenatal acetaminophen and autism or ADHD.
 - [Baby food lawsuit](https://lawsuit.center/baby-food-lawsuit): Heavy-metal baby food injury claims.
 - [Processed food lawsuit](https://lawsuit.center/processed-food-lawsuit): Ultra-processed food claims.
+- [Processed food case review](https://lawsuit.center/processed-food-case-review): Free review for ultra-processed food claims.
+- [Consumer product case review](https://lawsuit.center/consumer-product-case-review): Free review for cosmetics, baby products, medications, or medical devices.
+- [Reproductive case review](https://lawsuit.center/reproductive-case-review): Free review for uterine or ovarian cancer and fertility complications.
+- [Cancer case review](https://lawsuit.center/cancer-case-review): Free review for cancer tied to a product, workplace, or water.
 - [Product liability lawsuits](https://lawsuit.center/product-liability-lawsuits): Design, manufacturing, and warning defects.
 
-## Social media, AI, and tech harm
+## Social media and video games
 - [Social media addiction lawsuit](https://lawsuit.center/social-media-addiction-lawsuit): Youth mental-health claims.
 - [Social media case review](https://lawsuit.center/social-media-case-review): Free review for social-media harm claims.
+- [Instagram lawsuit](https://lawsuit.center/instagram-lawsuit): Teen mental-health claims against Meta.
+- [TikTok lawsuit](https://lawsuit.center/tiktok-lawsuit): Teen mental-health claims against TikTok.
 - [Video game lawsuit](https://lawsuit.center/video-game-lawsuit): Compulsive-design youth-harm claims.
-- [OpenAI case review](https://lawsuit.center/openai-case-review): Review for AI chatbot harm claims.
+- [Video game case review](https://lawsuit.center/video-game-case-review): Free review for video game addiction claims.
+- [Roblox case review](https://lawsuit.center/roblox-case-review): Free review for predator contact through Roblox.
+
+## AI chatbot harm
+- [OpenAI case review](https://lawsuit.center/openai-case-review): Free review for ChatGPT harm claims.
+- [AI case review](https://lawsuit.center/ai-case-review): Free review for harm involving an AI chatbot.
 - [Deepfake case review](https://lawsuit.center/deepfake-case-review): Non-consensual AI image claims.
+- [Winters v. OpenAI](https://lawsuit.center/winters-v-openai-lawsuit): ChatGPT medical advice case.
+- [Jean Doe v. OpenAI](https://lawsuit.center/jean-doe-v-openai-lawsuit): Suicide attempt case naming OpenAI and Microsoft.
+- [Nadia N. v. OpenAI](https://lawsuit.center/nadia-n-v-openai-lawsuit): Abuse and wrongful death case.
+- [Morales v. OpenAI](https://lawsuit.center/morales-v-openai-lawsuit): FSU shooting wrongful death case.
+- [Gourley v. OpenAI](https://lawsuit.center/gourley-v-openai-lawsuit): FSU shooting survivor case.
+- [Rushlow v. Altman](https://lawsuit.center/rushlow-v-altman-lawsuit): Tumbler Ridge school shooting survivor case.
 
-
+## En español
+- [Demanda de paraquat](https://lawsuit.center/es/paraquat-lawsuit): Exposición al herbicida y enfermedad de Parkinson.
+- [Demanda de Roundup](https://lawsuit.center/es/roundup-lawsuit): Exposición al glifosato y linfoma no Hodgkin.
+- [Abogados de Roundup](https://lawsuit.center/es/roundup-lawyers): Qué hacen los abogados de Roundup y qué preguntarles.
+- [Revisión de caso de pesticidas](https://lawsuit.center/es/pesticide-case-review): Revisión gratuita para reclamos por pesticidas.
 
 ## Policies
 - [Editorial policy](https://lawsuit.center/editorial-policy)
