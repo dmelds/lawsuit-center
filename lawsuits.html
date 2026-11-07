@@ -272,6 +272,11 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 :root[data-theme="light"] .site-nav.open { background: rgba(250,249,247,.98); }
 :root[data-theme="light"] .nav__links.is-open a,
 :root[data-theme="light"] .site-nav.open a { color: var(--ink); }
+.jump-nav { border-top: 1px solid var(--border); }
+.jump-nav .jump-nav__inner { align-items: center; }
+.jump-nav .jump-nav__label { flex-shrink: 0; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); padding-right: 6px; white-space: nowrap; }
+.jump-nav .jump-nav__inner a { color: var(--ink); background: var(--surface-2); border-color: var(--border-strong); font-weight: 600; }
+.jump-nav .jump-nav__inner a:hover, .jump-nav .jump-nav__inner a:focus-visible { border-color: var(--amber); color: var(--ink); background: rgba(212,162,78,.14); }
 #free-tools, #active-cases { scroll-margin-top: 160px; }
 @media (max-width: 760px) { #free-tools, #active-cases { scroll-margin-top: 140px; } }
 .dir-card__update { font-size: 13px; font-weight: 500; color: var(--ink-muted); }
@@ -355,6 +360,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 <nav class="jump-nav" aria-label="Jump to category">
   <div class="container">
     <div class="jump-nav__inner">
+      <span class="jump-nav__label">Jump to</span>
       <a href="#free-tools">Free Tools</a>
       <a href="#active-cases">Active Cases</a>
       <a href="#cancer">Cancer &amp; Exposure</a>
