@@ -1,0 +1,111 @@
+name: Prune Off-Mission Pages
+
+# Retires the off-mission pages (general PI, civil, business, bankruptcy,
+# defense, funding, truck) and the paid-placement program (for-law-firms,
+# marketing-packages, law-firm-inquiry, featured-lawyer slots, sponsored
+# disclosure copy). See prune_off_mission.py for the full list.
+#
+# Dispatch only: run it from the Actions tab, read the dry-run summary in the
+# log, then run again with apply = true. The branch input defaults to main.
+#
+# The apply run makes two commits:
+#   1. The policy pages whose prose was rewritten (advertising-disclosure,
+#      contact, about, david-meldofsky, how-case-review-works, resources,
+#      disclaimer, editorial-policy). Their dateModified moves to the run
+#      date, so this commit does NOT carry [skip lastmod] and their sitemap
+#      lastmod moves with it.
+#   2. Everything else: deleted pages, link and block removals, the footer
+#      disclosure sweep (set_footer_legal.py), search.js, llms.txt, then the
+#      regenerated _redirects and sitemap.xml. Carries
+#      [skip lastmod] [skip actions] so no other page's lastmod moves.
+#
+# The sitemap and redirect jobs do not fire on a push made with the
+# workflow token, so this job runs both generators itself.
+#
+# On the 1st of each month it runs prune_off_mission.py --check, which never
+# writes anything and fails if a deleted page, a link to one, or
+# paid-placement copy has come back (a page built from a stale donor).
+
+on:
+  schedule:
+    - cron: '23 12 1 * *'
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Write changes and commit (leave false for a dry run)'
+        type: boolean
+        default: false
+      branch:
+        description: 'Branch to commit to'
+        type: string
+        default: main
+
+concurrency:
+  group: repo-writes
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch || 'main' }}
+          fetch-depth: 0
+
+      - name: Monthly guard
+        if: ${{ github.event_name == 'schedule' }}
+        run: python3 prune_off_mission.py --check
+
+      - name: Dry run
+        if: ${{ github.event_name != 'schedule' }}
+        run: |
+          set -o pipefail
+          python3 prune_off_mission.py 2>&1 | tee /tmp/prune.log
+          python3 set_footer_legal.py | head -4
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        run: |
+          set -euo pipefail
+          python3 prune_off_mission.py --apply > /dev/null
+          python3 set_footer_legal.py --apply | head -3
+          python3 prune_off_mission.py --check
+
+      - name: Commit and push
+        if: ${{ inputs.apply }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet && [ -z "$(git ls-files --deleted)" ]; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          DATED="advertising-disclosure.html contact.html about.html david-meldofsky.html how-case-review-works.html resources.html disclaimer.html editorial-policy.html"
+          git add -- $DATED
+          if ! git diff --cached --quiet; then
+            git commit -m "Rewrite policy pages for retired paid placement [skip ci]"
+          fi
+          git add -A -- '*.html' search.js llms.txt
+          git commit -m "Prune off-mission pages and paid placement [skip lastmod] [skip actions]"
+          python3 generate_redirects.py
+          python3 generate-sitemap.py
+          git add _redirects sitemap.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "Regenerate redirects and sitemap after prune [skip lastmod] [skip actions]"
+          fi
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            git pull --rebase origin "${{ inputs.branch || 'main' }}"
+            sleep $((attempt * 3))
+          done
+          echo "Push still failing after 5 attempts"
+          exit 1
