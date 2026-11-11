@@ -11,7 +11,9 @@
    First-party, inline, no third-party host, so tracker blockers that take googletagmanager
    dark leave this alone. sessionStorage lives for the tab; a private window that refuses
    storage still gets the current page's referrer and UTMs. consent_version is static in the
-   HTML and is never touched here. */
+   HTML and is never touched here.
+
+   A slot= parameter on the URL fills utm_content when the real tag is missing. */
 (function () {
   var KEY = "lc_attr";
   var UTMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
@@ -27,6 +29,13 @@
     try {
       var sp = new URLSearchParams(location.search);
       UTMS.forEach(function (k) { var v = sp.get(k); if (v) q[k] = String(v).slice(0, 100); });
+      /* Informer's buttons repeat their slot name in a plain slot= parameter
+         (cta_click listener v5). Link-cleaning browser tools remove utm_* before
+         this page loads and leave slot alone, so when utm_content is missing the
+         slot stands in for it. utm_source stays empty in that case, which is how
+         a lead with stripped tags can be told from one with its tags intact. */
+      var slot = sp.get("slot");
+      if (slot && !q.utm_content) q.utm_content = String(slot).slice(0, 100);
     } catch (e) { /* old browser */ }
     var ref = "";
     try { ref = document.referrer || ""; } catch (e) { /* ignore */ }
