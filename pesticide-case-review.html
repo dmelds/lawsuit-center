@@ -55,7 +55,7 @@
     "description": "Request a pesticide exposure case review through Lawsuit Center.",
     "url": "https://lawsuit.center/pesticide-case-review",
     "datePublished": "2026-04-11",
-    "dateModified": "2026-10-12",
+    "dateModified": "2026-11-11",
     "author": { "@type": "Person", "name": "David Meldofsky", "jobTitle": "Attorney", "url": "https://lawsuit.center/david-meldofsky" },
     "publisher": {
       "@type": "Organization",
@@ -586,7 +586,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="actions">
       <a href="#case-review-form" class="btn btn--amber btn--lg">Skip to Form ↓</a>
     </div>
-    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-10-12">October 12, 2026</time>.</p>
+    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-11-11">November 11, 2026</time>.</p>
     <p class="meta">
       Free initial review · No obligation · No attorney-client relationship is formed by submitting this form.
     </p>
@@ -681,20 +681,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         </div>
 
         <div class="field">
-          <label for="summary" class="field-label">Briefly describe what happened</label>
-          <p id="summary-note" class="form-note">
-            What product was involved — paraquat, Roundup, another herbicide or insecticide?
-            Where did exposure occur — farm, landscaping job, residential use, drift from a neighbor?
-            Any diagnosis received? Approximate years of exposure or use help.
-          </p>
-          <textarea id="summary" name="summary" rows="7" aria-describedby="summary-note summary-warning" required></textarea>
-          <p id="summary-warning" class="form-note">
-            Please do not include Social Security numbers, financial account numbers, full medical
-            records, or highly sensitive personal information.
-          </p>
-        </div>
-
-        <div class="field">
           <label for="exposure-period" class="field-label">Approximate years of exposure</label>
           <input type="text" id="exposure-period" name="exposure-period" placeholder="e.g. 1995–2015" aria-describedby="exposure-note" />
           <p id="exposure-note" class="form-note">
@@ -715,6 +701,19 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
           <input type="text" id="work-setting" name="work-setting" placeholder="e.g. row-crop farm, landscaping, residential lawn care" aria-describedby="work-setting-note" />
           <p id="work-setting-note" class="form-note">
             Where the exposure happened — farm, landscaping, residential use, or another setting.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="summary" class="field-label">Briefly describe what happened</label>
+          <p id="summary-note" class="form-note">
+            How did the exposure happen? Was there a diagnosis, and roughly when?
+            A few sentences are enough.
+          </p>
+          <textarea id="summary" name="summary" rows="7" aria-describedby="summary-note summary-warning" required></textarea>
+          <p id="summary-warning" class="form-note">
+            Please do not include Social Security numbers, financial account numbers, full medical
+            records, or highly sensitive personal information.
           </p>
         </div>
 
