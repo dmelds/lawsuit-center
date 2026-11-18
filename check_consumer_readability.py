@@ -19,6 +19,18 @@ and are marked CENTER below:
   CASE_PAGES             The OpenAI case pages, read by families.
 When Informer's copy changes a rule, carry the change here by hand.
 
+NEW TEXT, with --base. Carried over from Informer on 2026-11-17. --base REF
+reads only the prose blocks an edit changed (each block the same page on REF
+does not have), on any page, Sources list left out, and warns on a sentence
+of NEW_SENTENCE_MAX words or more, a block of NEW_BLOCK_MAX words or more, a
+court order's own wording (COURT_WORDING, with the plain words to use), a
+sentence that starts with "And", and a reading grade above GRADE_MAX once the
+new text runs to NEW_GRADE_MIN_WORDS words. It prints the grade of the new
+text for each page that has any. Center's whole-page rules read no sentence
+or wording outside the OpenAI case pages, so a status sentence added to an
+intake page was checked for nothing but its length. Without --base nothing
+here runs and the report is unchanged.
+
 
 Companion to check_date_consistency.py. That script catches pages that lie
 about when they were updated. This one catches pages written for the wrong
@@ -126,10 +138,12 @@ Usage
     python3 check_consumer_readability.py              # report, exit 0
     python3 check_consumer_readability.py --strict     # exit 1 on any ERROR
     python3 check_consumer_readability.py --page X.html
+    python3 check_consumer_readability.py --page X.html --base HEAD
 """
 import html as htmlmod
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -141,6 +155,10 @@ except ImportError:
 GRADE_MAX = 10.5
 SENTENCE_MAX = 45
 PARAGRAPH_MAX = 120
+# --base rules, read on the text an edit changed (see NEW TEXT above).
+NEW_SENTENCE_MAX = 30
+NEW_BLOCK_MAX = 90
+NEW_GRADE_MIN_WORDS = 60
 CTA_MIN = 3
 
 # House byline, as it appears on the page. The &middot; spelling renders the
@@ -224,6 +242,31 @@ BLOCKLIST = {
     r"\bpatterned? (its|their) theories\b": "borrowed from",
     r"\bmoving papers\b|\bmotion practice\b": "arguments before the judge",
 }
+
+# A court order's own wording, with the plain words a reader needs. Read only
+# on new text (--base). The first six were found in drafts on 2026-11-17; the
+# rest are the same family and had no use on an update page that day.
+COURT_WORDING = {
+    r"\bgood[- ]faith basis\b": "an honest reason to believe",
+    r"\bshow(?:ing)? cause\b": "explain why",
+    r"\bwith prejudice\b": "and cannot be filed again",
+    r"\bwithout prejudice\b": "and can be filed again",
+    r"\bon the docket\b": "open",
+    r"\bappendix\b": "a list that comes with the order",
+    r"\b(?:do|does|did) not reach\b": "say what the ruling covers",
+    r"\bpursuant to\b": "under",
+    r"\bstipulat(?:ion|ions|ed|e|es)\b": "both sides agreed",
+    r"\bstay(?:ed)? pending\b|\bstayed\b": "paused until",
+    r"\bremand(?:ed|s)?\b": "sent back",
+    r"\bvacat(?:ed|es|ur)\b": "canceled / threw out",
+    r"\bsua sponte\b": "on her own",
+    r"\binterlocutory\b": "before the case ends",
+}
+# The Sources list: from its heading to the next h2. A citation names an order
+# by its title ("order to show cause"), so the new-text rules skip it.
+SOURCES_SECTION = re.compile(
+    r"<h2\b[^>]*>\s*Sources\s*</h2>.*?(?=<h2\b|</main>|</article>|\Z)",
+    re.S | re.I)
 
 ADJUDICATING = [
     r"would not cover you",
@@ -394,7 +437,59 @@ def norm(s):
     return " ".join(s.split())
 
 
-def check(path, in_cluster):
+def base_html(name, ref):
+    """The page as it stands on `ref`, or '' when it is not there (a new page,
+    where every block is new text)."""
+    r = subprocess.run(["git", "show", f"{ref}:{name}"],
+                       capture_output=True, text=True, encoding="utf-8")
+    return r.stdout if r.returncode == 0 else ""
+
+
+def new_text_problems(html, old_html):
+    """Findings on the prose blocks this page has and `old_html` does not,
+    Sources list left out. Returns (warnings, grade or None, words)."""
+    old = {t for _, t in paragraphs(SOURCES_SECTION.sub(" ", old_html))}
+    blocks = [(n, t) for n, t in paragraphs(SOURCES_SECTION.sub(" ", html))
+              if t not in old]
+    if not blocks:
+        return [], None, 0
+    out = []
+    for n, t in blocks:
+        if NEW_BLOCK_MAX <= n < PARAGRAPH_MAX:
+            out.append(f"new text: {n}-word block "
+                       f"(max {NEW_BLOCK_MAX - 1}): {t[:90]}...")
+        for s in re.split(r"(?<=[.!?])\s+", t):
+            k = len(s.split())
+            if k >= NEW_SENTENCE_MAX:
+                out.append(f"new text: {k}-word sentence "
+                           f"(max {NEW_SENTENCE_MAX - 1}): {s[:90]}...")
+            if re.match(r"And\b", s):
+                out.append(f"new text: sentence starts with \"And\": {s[:70]}...")
+        for pat, hint in COURT_WORDING.items():
+            for m in re.finditer(pat, t, re.I):
+                ctx = t[max(0, m.start() - 40):m.end() + 30]
+                out.append(f"new text: court wording \"{m.group(0)}\"  ->  "
+                           f"{hint}: ...{ctx}...")
+    words = sum(n for n, _ in blocks)
+    grade = None
+    if words >= NEW_GRADE_MIN_WORDS:
+        try:
+            grade = textstat.flesch_kincaid_grade(" ".join(
+                t if t[-1] in ".!?" else t + "." for _, t in blocks))
+        except LookupError:
+            out.append("new text: grade not scored, " + DICT_HELP)
+        else:
+            if grade > GRADE_MAX:
+                out.append(f"new text: reading grade {grade:.1f} is above "
+                           f"{GRADE_MAX}")
+    return out, grade, words
+
+
+# page -> (words of new text, its grade or None), filled by check() under --base.
+NEW_TEXT_NOTES = {}
+
+
+def check(path, in_cluster, base=None):
     html = path.read_text(encoding="utf-8")
     name = path.name
     text = visible_text(html)
@@ -421,6 +516,12 @@ def check(path, in_cluster):
     for n, t in paragraphs(html):
         if n >= PARAGRAPH_MAX:
             warnings.append(f"{n}-word paragraph: {t[:90]}...")
+
+    if base is not None:
+        found, grade, words = new_text_problems(html, base_html(name, base))
+        warnings.extend(found)
+        if words:
+            NEW_TEXT_NOTES[name] = (words, grade)
 
     if not cta_exempt(name):
         warnings.extend(cta_problems(html))
@@ -471,6 +572,15 @@ def main():
     only = None
     if "--page" in sys.argv:
         only = sys.argv[sys.argv.index("--page") + 1]
+    base = None
+    if "--base" in sys.argv:
+        base = sys.argv[sys.argv.index("--base") + 1]
+        ok = subprocess.run(["git", "rev-parse", "--verify", "--quiet",
+                             base + "^{commit}"], capture_output=True)
+        if ok.returncode != 0:
+            print(f"--base {base}: git cannot find that commit here; "
+                  f"nothing checked")
+            return 2
 
     if only:
         targets = [root / only] if (root / only).exists() else []
@@ -489,11 +599,22 @@ def main():
           f"reader-adjudicating language, FAQ drift, doubled punctuation, "
           f"paragraphs of "
           f"{PARAGRAPH_MAX}+ words, the CTA set)\n")
+    if base is not None:
+        print(f"New text read against {base}: sentences of {NEW_SENTENCE_MAX}+ "
+              f"words, blocks of {NEW_BLOCK_MAX}+ words, court wording, "
+              f"sentences starting with \"And\", and its reading grade. "
+              f"Sources lists left out.\n")
     for path in targets:
-        errors, warnings = check(path, path.name in cluster)
-        if not errors and not warnings:
+        errors, warnings = check(path, path.name in cluster, base)
+        note = NEW_TEXT_NOTES.get(path.name)
+        if not errors and not warnings and not note:
             continue
         print(path.name)
+        if note:
+            words, grade = note
+            print(f"    new text: {words} words"
+                  + (f", grade {grade:.1f}" if grade is not None
+                     else f", too short to grade (under {NEW_GRADE_MIN_WORDS})"))
         for e in errors:
             n_err += 1
             print(f"    ERROR  {e}")
