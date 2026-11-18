@@ -6,7 +6,9 @@ Generate sitemap.xml for lawsuit.center.
 - Excludes the JS-fetched footer fragment, noindex pages, thank-you/utility pages,
   and any URL that 301-redirects to a different slug.
 - lastmod from each file's last git commit date, ignoring commits marked
-  SKIP_TOKEN (falls back to file mtime, then today).
+  SKIP_TOKEN and commits merged by a pull request whose title carries it,
+  unless the commit moved the page's dateModified (falls back to file mtime,
+  then today).
 Runs in CI (GitHub Actions), where full git history is available.
 """
 
@@ -40,6 +42,63 @@ def skip_commits():
                     if ln.strip() and not ln.lstrip().startswith("#")]
     except OSError:
         return []
+
+_MERGED_SKIPS = None
+
+
+def merged_skip_commits():
+    """Commits that reached main through a pull request whose title carries
+    SKIP_TOKEN.
+
+    GitHub writes the pull request title into the merge commit's message, and
+    leaves each upload commit under it with its own message ("Add files via
+    upload"). So a web upload merged under a "[skip lastmod]" title used to
+    count as a change all the same: on 2026-11-18 a wording-only pass on two
+    pages, merged that way, moved both dates to that day. Added that day. A
+    merge's own commits are the ones its second parent has and its first
+    parent does not.
+    """
+    global _MERGED_SKIPS
+    if _MERGED_SKIPS is not None:
+        return _MERGED_SKIPS
+    found = set()
+    try:
+        merges = subprocess.run(
+            ["git", "log", "--merges", "-F", f"--grep={SKIP_TOKEN}", "--format=%H"],
+            capture_output=True, text=True, check=True,
+        ).stdout.split()
+        for m in merges:
+            r = subprocess.run(
+                ["git", "rev-list", "--no-merges", f"{m}^1..{m}^2"],
+                capture_output=True, text=True,
+            )
+            if r.returncode == 0:
+                found.update(r.stdout.split())
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+    _MERGED_SKIPS = found
+    return found
+
+
+def moved_page_date(sha, path):
+    """True when this commit changed the page's own dateModified.
+
+    A pull request title covers every file in the pull request, and a title
+    with SKIP_TOKEN is also how a same-day correction gets past the date gate.
+    A real edit can ride in that pull request beside the correction (on
+    2026-11-12 depo-provera.html did on Lawsuit Center). A commit that moved
+    the page's dateModified is a change the page itself reports, so it keeps
+    counting.
+    """
+    try:
+        r = subprocess.run(
+            ["git", "show", "--format=", "--unified=0", sha, "--", path],
+            capture_output=True, text=True,
+        )
+    except Exception:
+        return False
+    return bool(re.search(r'^\+.*"dateModified"', r.stdout, re.M))
+
 
 # Never list these: footer is a fetch() fragment; the rest are noindex/utility.
 EXCLUDE_FILES = {
@@ -88,13 +147,16 @@ def redirected_away():
 
 
 def git_lastmod(path):
-    # --no-merges is load-bearing. A merge commit's message never carries
-    # SKIP_TOKEN, so without it the PR merge that lands a mechanical sweep is
-    # reported as the file's last change and the skip token is bypassed for
-    # every file the merge was not TREESAME to a parent on.
+    # --no-merges is load-bearing: without it the PR merge that lands a
+    # mechanical sweep is reported as the file's last change, and the skip
+    # token is bypassed for every file the merge was not TREESAME to a parent
+    # on. A merge whose own message carries SKIP_TOKEN (the pull request title)
+    # marks every commit it brought in; merged_skip_commits() lists those, and
+    # moved_page_date() keeps the ones that moved the page's own date.
     # The first pass drops token commits and listed SHAs; the second pass, used
     # only when every commit was skipped, takes the newest commit of any kind.
     skipped = skip_commits()
+    merged = merged_skip_commits()
     try:
         for extra in (["-F", f"--grep={SKIP_TOKEN}", "--invert-grep"], []):
             out = subprocess.run(
@@ -104,6 +166,8 @@ def git_lastmod(path):
             for line in out.splitlines():
                 sha, _, d = line.partition(" ")
                 if extra and any(sha.startswith(x) for x in skipped):
+                    continue
+                if extra and sha in merged and not moved_page_date(sha, path):
                     continue
                 if d:
                     return d
