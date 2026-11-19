@@ -152,3 +152,15 @@ https://www.lawsuits.center/*  https://lawsuit.center/:splat      301!
 # Consolidated as chemical-exposure-lawsuits duplicate (July 6, 2026) -> redirect to chemical exposure hub
 /who-may-qualify-for-a-chemical-exposure-lawsuit.html  /chemical-exposure-lawsuits  301!
 /who-may-qualify-for-a-chemical-exposure-lawsuit       /chemical-exposure-lawsuits  301
+
+# Typed topic addresses -> the topic's case review form (added 11/19/26).
+# /socialmedia produced a real lead on 11/19 by way of the 404 page.
+/socialmedia  /social-media-case-review  301
+/social-media  /social-media-case-review  301
+/hernia-mesh  /hernia-mesh-case-review  301
+/talc  /talcum-powder-case-review  301
+/roundup  /pesticide-case-review  301
+/ozempic  /ozempic-case-review  301
+/hair-relaxer  /hair-relaxer-case-review  301
+/roblox  /roblox-case-review  301
+/asbestos  /asbestos-case-review  301
