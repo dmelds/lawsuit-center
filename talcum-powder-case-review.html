@@ -53,7 +53,7 @@
     "description": "Request a talcum powder lawsuit case review through Lawsuit Center.",
     "url": "https://lawsuit.center/talcum-powder-case-review",
     "datePublished": "2026-04-11",
-    "dateModified": "2026-11-11",
+    "dateModified": "2026-11-26",
     "author": { "@type": "Person", "name": "David Meldofsky", "jobTitle": "Attorney", "url": "https://lawsuit.center/david-meldofsky" },
     "publisher": {
       "@type": "Organization",
@@ -557,7 +557,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <div class="actions">
       <a href="#case-review-form" class="btn btn--amber btn--lg">Skip to Form ↓</a>
     </div>
-    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-11-11">November 11, 2026</time>.</p>
+    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-11-26">November 26, 2026</time>.</p>
     <p class="meta">
       Free initial review · No obligation · No attorney-client relationship is formed by submitting this form.
     </p>
@@ -676,8 +676,62 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     </div>
 
     <div class="field">
-      <label for="state" class="field-label">State</label>
-      <input type="text" id="state" name="state" autocomplete="address-level1" aria-describedby="state-note" required />
+      <label for="state" class="field-label">Your state</label>
+      <select id="state" name="state" autocomplete="address-level1" aria-describedby="state-note" required>
+        <option value="">Select your state</option>
+        <option value="Alabama" data-code="AL">Alabama</option>
+        <option value="Alaska" data-code="AK">Alaska</option>
+        <option value="Arizona" data-code="AZ">Arizona</option>
+        <option value="Arkansas" data-code="AR">Arkansas</option>
+        <option value="California" data-code="CA">California</option>
+        <option value="Colorado" data-code="CO">Colorado</option>
+        <option value="Connecticut" data-code="CT">Connecticut</option>
+        <option value="Delaware" data-code="DE">Delaware</option>
+        <option value="District of Columbia" data-code="DC">District of Columbia</option>
+        <option value="Florida" data-code="FL">Florida</option>
+        <option value="Georgia" data-code="GA">Georgia</option>
+        <option value="Hawaii" data-code="HI">Hawaii</option>
+        <option value="Idaho" data-code="ID">Idaho</option>
+        <option value="Illinois" data-code="IL">Illinois</option>
+        <option value="Indiana" data-code="IN">Indiana</option>
+        <option value="Iowa" data-code="IA">Iowa</option>
+        <option value="Kansas" data-code="KS">Kansas</option>
+        <option value="Kentucky" data-code="KY">Kentucky</option>
+        <option value="Louisiana" data-code="LA">Louisiana</option>
+        <option value="Maine" data-code="ME">Maine</option>
+        <option value="Maryland" data-code="MD">Maryland</option>
+        <option value="Massachusetts" data-code="MA">Massachusetts</option>
+        <option value="Michigan" data-code="MI">Michigan</option>
+        <option value="Minnesota" data-code="MN">Minnesota</option>
+        <option value="Mississippi" data-code="MS">Mississippi</option>
+        <option value="Missouri" data-code="MO">Missouri</option>
+        <option value="Montana" data-code="MT">Montana</option>
+        <option value="Nebraska" data-code="NE">Nebraska</option>
+        <option value="Nevada" data-code="NV">Nevada</option>
+        <option value="New Hampshire" data-code="NH">New Hampshire</option>
+        <option value="New Jersey" data-code="NJ">New Jersey</option>
+        <option value="New Mexico" data-code="NM">New Mexico</option>
+        <option value="New York" data-code="NY">New York</option>
+        <option value="North Carolina" data-code="NC">North Carolina</option>
+        <option value="North Dakota" data-code="ND">North Dakota</option>
+        <option value="Ohio" data-code="OH">Ohio</option>
+        <option value="Oklahoma" data-code="OK">Oklahoma</option>
+        <option value="Oregon" data-code="OR">Oregon</option>
+        <option value="Pennsylvania" data-code="PA">Pennsylvania</option>
+        <option value="Puerto Rico" data-code="PR">Puerto Rico</option>
+        <option value="Rhode Island" data-code="RI">Rhode Island</option>
+        <option value="South Carolina" data-code="SC">South Carolina</option>
+        <option value="South Dakota" data-code="SD">South Dakota</option>
+        <option value="Tennessee" data-code="TN">Tennessee</option>
+        <option value="Texas" data-code="TX">Texas</option>
+        <option value="Utah" data-code="UT">Utah</option>
+        <option value="Vermont" data-code="VT">Vermont</option>
+        <option value="Virginia" data-code="VA">Virginia</option>
+        <option value="Washington" data-code="WA">Washington</option>
+        <option value="West Virginia" data-code="WV">West Virginia</option>
+        <option value="Wisconsin" data-code="WI">Wisconsin</option>
+        <option value="Wyoming" data-code="WY">Wyoming</option>
+      </select>
       <p id="state-note" class="form-note">
         Your state helps identify whether location-specific deadlines, claim rules, or review options may apply.
       </p>
@@ -857,9 +911,14 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
 
     var stateParam = params.get('state');
     if (stateParam) {
-      var stateInput = document.getElementById('state');
-      if (stateInput && !stateInput.value) {
-        stateInput.value = stateParam;
+      var stateSelect = document.getElementById('state');
+      if (stateSelect && !stateSelect.value) {
+        var wantedState = stateParam.replace(/\s+/g, ' ').trim().toLowerCase();
+        Array.from(stateSelect.options).forEach(function(opt) {
+          if (!opt.value) return;
+          var code = (opt.getAttribute('data-code') || '').toLowerCase();
+          if (opt.value.toLowerCase() === wantedState || code === wantedState) opt.selected = true;
+        });
       }
     }
 
