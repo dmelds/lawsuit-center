@@ -54,7 +54,7 @@
     "url": "https://lawsuit.center/pfas-exposure-checker",
     "applicationCategory": "Educational",
     "datePublished": "2026-05-06",
-    "dateModified": "2026-10-12",
+    "dateModified": "2026-11-26",
     "author": { "@type": "Person", "name": "David Meldofsky", "jobTitle": "Attorney", "url": "https://lawsuit.center/david-meldofsky" },
     "publisher": {
       "@type": "Organization",
@@ -592,7 +592,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       <a href="#exposure-checker" class="btn btn--amber btn--lg">Begin Check ↓</a>
       <a href="https://lawsuitinformer.com/pfas-water-contamination-lawsuits?utm_source=lawsuitcenter&amp;utm_medium=referral&amp;utm_campaign=cross_property&amp;utm_content=pfas-exposure-checker" class="btn btn--ghost btn--lg">Read the Educational Guide</a>
     </div>
-    <p class="meta">Published <time datetime="2026-05-06">May 6, 2026</time> &middot; Updated <time datetime="2026-10-12">October 12, 2026</time>.</p>
+    <p class="meta">Published <time datetime="2026-05-06">May 6, 2026</time> &middot; Updated <time datetime="2026-11-26">November 26, 2026</time>.</p>
     <p class="meta">
       Educational tool · No attorney-client relationship is formed by using this checker.
     </p>
@@ -813,7 +813,7 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         { id: 'preeclampsia', title: 'Pregnancy-induced hypertension or preeclampsia' },
         { id: 'cholesterol', title: 'Diagnosed high cholesterol' },
         { id: 'other_cancer', title: 'Another cancer (prostate, breast, bladder, etc.)' },
-        { id: 'none', title: 'None of these — but I was exposed', desc: 'Medical monitoring claims may still apply' }
+        { id: 'none', title: 'None of these — but I was exposed', desc: 'Exposed, but no diagnosis so far' }
       ]
     }
   ];
@@ -983,7 +983,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     const a = state.answers;
     const cases = [];
     const hasQualifyingDx = a.diagnoses.some(d => QUALIFYING_DX.includes(d));
-    const onlyExposed = a.diagnoses.includes('none');
 
     if ((a.exposure === 'afff' || a.exposure === 'multiple') && hasQualifyingDx) {
       cases.push({
@@ -1006,14 +1005,6 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         desc: 'Workers at chemical plants, manufacturing facilities, and other sites that handled PFAS who developed qualifying illnesses may have personal injury or workers compensation claims.'
       });
     }
-    if (onlyExposed && (a.exposure === 'water' || a.exposure === 'multiple')) {
-      cases.push({
-        label: 'Medical Monitoring · Track',
-        title: 'Medical Monitoring Claims',
-        desc: 'Some jurisdictions allow medical monitoring claims for documented PFAS exposure even without a current diagnosis. State law varies — worth a free attorney review to see if yours is one of them.'
-      });
-    }
-
     if (a.exposure === 'farm') {
       const hasFarmDamages = a.diagnoses.some(d => QUALIFYING_FARM.includes(d));
       const onlySuspected = a.diagnoses.includes('none_farm');
@@ -1035,6 +1026,41 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     return cases;
   }
 
+  function renderNeedsDiagnosis() {
+    const healthHref = 'https://lawsuitinformer.com/pfas-health-effects?utm_source=lawsuitcenter&utm_medium=referral&utm_campaign=cross_property&utm_content=checker_no_dx';
+    checker.innerHTML = `
+      <div class="step result">
+        <span class="eyebrow result__eyebrow">Your Result</span>
+        <h3 class="result__headline">Our case review form asks for a diagnosis.</h3>
+        <p class="result__summary">Current PFAS injury cases are built around a condition a doctor has diagnosed. The form takes the conditions in the last step of this check, apart from high cholesterol. You did not pick one of those, so the form cannot take a health request from you yet.</p>
+        <div class="case-card">
+          <div class="case-card__label">If That Changes</div>
+          <div class="case-card__title">Come back after a diagnosis</div>
+          <div class="case-card__desc">If a doctor diagnoses one of these conditions later, run this check again. Keep a record of where you lived or worked and the years. Those details matter in a later review.</div>
+        </div>
+        <div class="result__cta">
+          <p class="result__cta-text">Read how PFAS can affect health and which conditions current cases name.</p>
+          <div class="result__actions">
+            <a href="${healthHref}" class="btn btn--amber btn--lg">Read About PFAS Health Effects &nbsp;→</a>
+            <a href="https://lawsuitinformer.com/pfas-water-contamination-lawsuits" class="btn btn--ghost btn--lg">Read the Guide</a>
+          </div>
+        </div>
+        <div class="result__disclaimer">
+          <strong>Important:</strong> This tool is educational and does not create an attorney-client relationship. It does not decide whether you have a claim. That depends on the facts.
+        </div>
+        <div class="restart">
+          <button id="restartBtn">Start over</button>
+        </div>
+      </div>
+    `;
+    document.getElementById('restartBtn').addEventListener('click', () => {
+      state.step = 0;
+      state.answers = { exposure: null, period: null, state: null, diagnoses: [] };
+      render();
+      document.getElementById('exposure-checker').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   function renderResult() {
     fillEl.style.width = '100%';
     progressEl.hidden = true;
@@ -1054,9 +1080,23 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       sessionStorage.setItem('lc_prefill_exposure', ctaExposure);
       sessionStorage.setItem('lc_prefill_state', a.state || '');
     } catch (e) {}
-    const ctaHref = `${reviewPage}?exposure=${encodeURIComponent(ctaExposure)}&state=${encodeURIComponent(a.state || '')}#case-review-form`;
+    // Carry the arriving button's tags into the form link, so the lead keeps its slot.
+    let carry = '';
+    try {
+      const arrived = new URLSearchParams(location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'slot'].forEach(k => {
+        const v = arrived.get(k);
+        if (v) carry += `&${k}=${encodeURIComponent(v.slice(0, 100))}`;
+      });
+    } catch (e) {}
+    // The AFFF form fills its exposure answer from situation=; the PFAS form reads exposure=.
+    const situation = isAfffPath ? `&situation=${encodeURIComponent(ctaExposure)}` : '';
+    const ctaHref = `${reviewPage}?exposure=${encodeURIComponent(ctaExposure)}&state=${encodeURIComponent(a.state || '')}${situation}${carry}#case-review-form`;
 
     const isFarmPath = a.exposure === 'farm';
+    // The PFAS and AFFF case review forms take health requests only with a diagnosis (farm and land claims excepted).
+    const needsDx = !isFarmPath && !a.diagnoses.some(d => QUALIFYING_DX.includes(d));
+    if (needsDx) return renderNeedsDiagnosis();
     let headline, summary, body;
     if (cases.length > 0) {
       headline = cases.length === 1

@@ -53,7 +53,7 @@
     "description": "Request a PFAS case review through Lawsuit Center.",
     "url": "https://lawsuit.center/pfas-case-review",
     "datePublished": "2026-04-11",
-    "dateModified": "2026-10-28",
+    "dateModified": "2026-11-26",
     "author": { "@type": "Person", "name": "David Meldofsky", "jobTitle": "Attorney", "url": "https://lawsuit.center/david-meldofsky" },
     "publisher": {
       "@type": "Organization",
@@ -291,7 +291,7 @@
   <meta property="og:site_name" content="Lawsuit Center">
   <meta property="og:url" content="https://lawsuit.center/pfas-case-review">
   <meta property="og:title" content="PFAS Claims: Free Case Review | Lawsuit Center">
-  <meta property="og:description" content="PFAS claims involve contaminated drinking water, AFFF firefighting foam exposure, industrial releases, and farm and agricultural land contamination. Submit your exposure history or diagnosis for a free case review.">
+  <meta property="og:description" content="PFAS claims involve contaminated drinking water, AFFF firefighting foam exposure, industrial releases, and farm and agricultural land contamination. Submit your diagnosis and exposure history for a free case review.">
   <meta property="og:image" content="https://lawsuit.center/og-pfas.png">
   <meta property="og:image:alt" content="Lawsuit Center attorney-built case review">
   <meta name="twitter:card" content="summary_large_image">
@@ -552,12 +552,12 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
     <span class="eyebrow" style="display:inline-block; margin-bottom: 18px;">PFAS Case Review</span>
     <h1>Request a <em>PFAS case review.</em></h1>
     <p class="lede">
-      Tell us about the exposure history or diagnosis. David Meldofsky refers your request to participating law firms where a firm handles your category and state.
+      Tell us about your diagnosis and where you were exposed. David Meldofsky refers your request to participating law firms where a firm handles your category and state.
     </p>
     <div class="actions">
       <a href="#case-review-form" class="btn btn--amber btn--lg">Skip to Form ↓</a>
     </div>
-    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-10-28">October 28, 2026</time>.</p>
+    <p class="meta">Published <time datetime="2026-04-11">April 11, 2026</time> &middot; Updated <time datetime="2026-11-26">November 26, 2026</time>.</p>
     <p class="meta">
       Free initial review · No obligation · No attorney-client relationship is formed by submitting this form.
     </p>
@@ -580,7 +580,8 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       Most PFAS claims start with one of three sources: contaminated drinking water, firefighting
       foam, or releases from an industrial plant. They can involve workers, families near military
       bases or airports, and whole communities on one water system. You don't need the legal terms.
-      Basic facts about where you lived or worked, and any diagnosis, are enough to start.
+      A health claim needs a diagnosis from a doctor. Your diagnosis and basic facts about where
+      you lived or worked are enough to start. A farm or land damage claim does not need a diagnosis.
     </p>
     <ul>
       <li>Residents served by a public water system or private well with reported PFAS contamination</li>
@@ -657,11 +658,13 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
         <option value="Ulcerative colitis">Ulcerative colitis</option>
         <option value="Thyroid disease">Thyroid disease</option>
         <option value="Liver cancer">Liver cancer</option>
+        <option value="Liver disease">Liver disease (not cancer)</option>
+        <option value="Preeclampsia">Preeclampsia or pregnancy-induced high blood pressure</option>
         <option value="Other cancer">Other cancer</option>
-        <option value="Not diagnosed / other">Not diagnosed yet / other</option>
+        <option value="Not diagnosed / other" disabled>No diagnosis (farm or land damage claims only)</option>
       </select>
       <p id="diagnosis-note" class="form-note">
-        Choose the diagnosis a doctor gave you. If you have no diagnosis yet, or yours is not listed, choose the last option.
+        Choose the diagnosis a doctor gave you. A health claim needs one of these diagnoses. For farm or land damage, choose the farm option under exposure type first. The no-diagnosis option then opens.
       </p>
     </div>
 
@@ -1093,6 +1096,51 @@ html.theme-anim body { transition: background-color .15s ease, color .15s ease; 
       });
     }
   });
+</script>
+
+<script>
+  // Diagnosis gate: "No diagnosis" is open only for farm or land damage claims.
+  // It ships disabled, so without JavaScript every visitor must pick a diagnosis.
+  (function () {
+    var exposure = document.getElementById("exposure-type");
+    var diagnosis = document.getElementById("diagnosis");
+    if (!exposure || !diagnosis) return;
+    var NONE = "Not diagnosed / other";
+    var FARM = "Farm or Agricultural Land Contamination";
+    var noneOpt = null;
+    Array.prototype.forEach.call(diagnosis.options, function (o) { if (o.value === NONE) noneOpt = o; });
+    if (!noneOpt) return;
+
+    function sync() {
+      var farm = exposure.value === FARM;
+      noneOpt.disabled = !farm;
+      if (!farm && diagnosis.value === NONE) {
+        diagnosis.value = "";
+        diagnosis.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    }
+
+    // Last check before Netlify takes the submit, ahead of form-validation.js and lead-events.js.
+    var form = diagnosis.form;
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        sync();
+        if (!diagnosis.checkValidity()) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          diagnosis.reportValidity();
+        }
+      });
+    }
+
+    exposure.addEventListener("change", sync);
+    // Prefill scripts can set the exposure answer without a change event, so check again when the visitor reaches the diagnosis field.
+    diagnosis.addEventListener("focus", sync);
+    diagnosis.addEventListener("mousedown", sync);
+    document.addEventListener("DOMContentLoaded", sync);
+    window.addEventListener("load", sync);
+    sync();
+  })();
 </script>
 
 <script>
